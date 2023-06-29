@@ -16,6 +16,11 @@
  * OR: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR
  */
 
+const givenOne = 64 < 2; // false
+const givenTwo = "cheese" === "cheese"; // true
+const givenThree = 15 / 3 === 5; // true
+const givenFour = 12 > 13; // false
+
 // Replace this comment with your code.
 
 /**********************************
