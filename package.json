@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test-01": "mocha './01-Values-and-Data-Types/**.js'",
-    "test:mochawesome": "mocha './**/index.js' --reporter=mochawesome --reporter-options autoOpen=true"
+    "test-01": "mocha './01-Values-and-Data-Types/**.js'"
   },
   "repository": {
     "type": "git",
