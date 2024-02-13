@@ -16,7 +16,7 @@
 - Array
 
 ### KEYWORDS
-- Special reserved words that  trigger certain  actions in javascript.
+- Special reserved words that  trigger certain actions in javascript.
 - Examples: Declare variables/functions. 
 
 ### VARIABLES

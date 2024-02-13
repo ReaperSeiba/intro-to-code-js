@@ -21,7 +21,24 @@ const givenTwo = "cheese" === "cheese"; // true
 const givenThree = 15 / 3 === 5; // true
 const givenFour = 12 > 13; // false
 
-// Replace this comment with your code.
+const andTrue = null;
+const andFalse = null;
+const orTrue = null;
+const orFalse = null;
+
+andTrue = givenTwo && givenThree;
+console.log(andTrue);
+
+andFalse = givenOne && givenFour;
+console.log(andFalse);
+
+orTrue = givenOne || givenTwo;
+console.log(orTrue);
+
+orFalse = givenOne || givenFour;
+console.log(orFalse);
+
+
 
 /**
  * #2: fiveCharacters
@@ -39,7 +56,11 @@ const givenFour = 12 > 13; // false
  * Ternary: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
  */
 
-// Replace this comment with your code.
+const notFiveChars = " ";
+const isItFiveChars = notFiveChars < 5 ? "it's 5 characters" : "not 5 characters";
+console.log(isItFiveChars);
+
+
 
 /**
  * #3: numberOrString
@@ -61,7 +82,15 @@ const givenFour = 12 > 13; // false
  */
 
 function numberOrString(value) {
-  // Replace this comment with your code.
+  if (value === String){
+    return "This is a string";
+  }
+  else if (value === Number){
+    return "This is a number";
+  }
+  else{
+    return "This is not a string nor a number"
+  }
 }
 
 /**
@@ -94,7 +123,12 @@ function numberOrString(value) {
  */
 
 function truthyFalsy(value) {
-  // Replace this comment with your code.
+  if (value !== 0 || value !== "" || value !== null || value !== undefined || value !== false){
+    return true;
+  }
+  else{
+    return false;
+  }
 }
 
 /**
@@ -119,7 +153,12 @@ function truthyFalsy(value) {
  */
 
 function letsGoParty(legalAge, outfitType, hasCoverCharge) {
-  // Replace this comment with your code.
+ if (legalAge < 25 || outfitType !== "pool party" || hasCoverCharge === false){
+  return "Go home, no partying for you tonight";
+ }
+ else{
+  return "Let's Go Party!";
+ }
 }
 
 /**
@@ -148,7 +187,25 @@ function letsGoParty(legalAge, outfitType, hasCoverCharge) {
  */
 
 function testGrader(grade) {
-  // Replace this comment with your code.
+  if (grade >= 90 && grade <= 100){
+    return "A";
+  }
+  if (grade >= 80 && grade <= 89){
+    return "B";
+  }
+  if (grade >= 70 && grade <= 79){
+    return "C";
+  }
+  if (grade >= 60 && grade <= 69){
+    return "D";
+  }
+  if (grade <= 60 && grade >= 0){
+    return "F";
+  }
+  else{
+    return "Not a valid grade";
+  }
+  
 }
 
 /**
@@ -174,7 +231,18 @@ function testGrader(grade) {
  */
 
 function daysInTheMonth(month) {
-  // Replace this comment with your code.
+ if (month === 1 || month === 3 || month === 5 || month === 7 || month === 8 || month === 10 || month === 12){
+  return 31;
+ }
+ else if (month === 4 || month === 6 || month === 9 || month === 11){
+  return 30;
+ }
+ else if (month === 2){
+  return 28;
+ }
+ else{
+  return "Not a valid month"
+ }
 }
 
 export {
