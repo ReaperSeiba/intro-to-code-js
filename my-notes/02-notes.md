@@ -1,5 +1,21 @@
 # Conditionals: Booleans and Equality
 
+- [Conditionals: Booleans and Equality](#conditionals-booleans-and-equality)
+  - [WTF is a conditional and why do they matter?](#wtf-is-a-conditional-and-why-do-they-matter)
+  - [Equality: Loose vs Strict (always Strict)](#equality-loose-vs-strict-always-strict)
+    - [When equal doesn't really mean equal](#when-equal-doesnt-really-mean-equal)
+  - [Practical Examples](#practical-examples)
+    - [The standalone `if`](#the-standalone-if)
+    - [The one-two: `if-else`](#the-one-two-if-else)
+    - [Chain 'em together: `else if`](#chain-em-together-else-if)
+  - [Equality, the unequal way](#equality-the-unequal-way)
+  - [Logic and its friends (not the rapper)](#logic-and-its-friends-not-the-rapper)
+    - [Logical practice](#logical-practice)
+    - [Nesting practice](#nesting-practice)
+  - [Conditionals: asking the right questions](#conditionals-asking-the-right-questions)
+  - [Switching things up](#switching-things-up)
+    - [Examples](#examples)
+
 ## WTF is a conditional and why do they matter?
 
 - Conditionals enable a code segment to conditionally execute things.

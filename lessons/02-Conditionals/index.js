@@ -21,24 +21,10 @@ const givenTwo = "cheese" === "cheese"; // true
 const givenThree = 15 / 3 === 5; // true
 const givenFour = 12 > 13; // false
 
-const andTrue = null;
-const andFalse = null;
-const orTrue = null;
-const orFalse = null;
-
-andTrue = givenTwo && givenThree;
-console.log(andTrue);
-
-andFalse = givenOne && givenFour;
-console.log(andFalse);
-
-orTrue = givenOne || givenTwo;
-console.log(orTrue);
-
-orFalse = givenOne || givenFour;
-console.log(orFalse);
-
-
+export const andTrue = givenTwo && givenThree;
+export const andFalse = givenOne && givenFour;
+export const orTrue = givenOne || givenTwo;
+export const orFalse = givenOne || givenFour;
 
 /**
  * #2: fiveCharacters
@@ -56,11 +42,9 @@ console.log(orFalse);
  * Ternary: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
  */
 
-const notFiveChars = " ";
-const isItFiveChars = notFiveChars < 5 ? "it's 5 characters" : "not 5 characters";
-console.log(isItFiveChars);
-
-
+export const notFiveChars = " ";
+export const isItFiveChars =
+  notFiveChars.length === 5 ? "it's 5 characters" : "not 5 characters";
 
 /**
  * #3: numberOrString
@@ -82,14 +66,12 @@ console.log(isItFiveChars);
  */
 
 function numberOrString(value) {
-  if (value === String){
+  if (typeof value === "string") {
     return "This is a string";
-  }
-  else if (value === Number){
+  } else if (typeof value === "number") {
     return "This is a number";
-  }
-  else{
-    return "This is not a string nor a number"
+  } else {
+    return "This is not a string nor a number";
   }
 }
 
@@ -122,13 +104,43 @@ function numberOrString(value) {
  * @returns {boolean}
  */
 
+/**
+ * Explicit conditional expressions
+ * - where you write out all your conditions
+ */
+// function truthyFalsy(value) {
+//   if (value === 0 || value === "" || value === null || value === undefined || value === false){
+//     return false;
+//   }
+//   return true;
+// }
+
+/**
+ * Using a switch statement
+ */
+// function truthyFalsy(value){
+//   switch(value){
+//     case 0:
+//     case "":
+//     case null:
+//     case undefined:
+//     case false:
+//       return false;
+//     default:
+//       return true;
+//   }
+// }
+
+/**
+ * One if-statement method
+ * Need to understand: truthy v falsy; type coercion; using negation in coercion
+ */
 function truthyFalsy(value) {
-  if (value !== 0 || value !== "" || value !== null || value !== undefined || value !== false){
-    return true;
-  }
-  else{
+  if (!value) {
+    // If the negated value is true, then...
     return false;
   }
+  return true;
 }
 
 /**
@@ -153,12 +165,10 @@ function truthyFalsy(value) {
  */
 
 function letsGoParty(legalAge, outfitType, hasCoverCharge) {
- if (legalAge < 25 || outfitType !== "pool party" || hasCoverCharge === false){
-  return "Go home, no partying for you tonight";
- }
- else{
-  return "Let's Go Party!";
- }
+  if (legalAge < 25 || outfitType !== "pool party" || !hasCoverCharge) {
+    return "Go home, no partying for you tonight.";
+  }
+  return "Let's go party!";
 }
 
 /**
@@ -185,28 +195,48 @@ function letsGoParty(legalAge, outfitType, hasCoverCharge) {
  * @param {number} grade
  * @returns {string}
  */
-
+/**
+ * Your version
+ */
 function testGrader(grade) {
-  if (grade >= 90 && grade <= 100){
+  if (typeof grade !== "number") {
+    return "Not a valid grade.";
+  }
+  if (grade >= 90 && grade <= 100) {
     return "A";
-  }
-  if (grade >= 80 && grade <= 89){
+  } else if (grade >= 80 && grade <= 89) {
     return "B";
-  }
-  if (grade >= 70 && grade <= 79){
+  } else if (grade >= 70 && grade <= 79) {
     return "C";
-  }
-  if (grade >= 60 && grade <= 69){
+  } else if (grade >= 60 && grade <= 69) {
     return "D";
-  }
-  if (grade <= 60 && grade >= 0){
+  } else if (grade <= 60 && grade >= 0) {
     return "F";
   }
-  else{
-    return "Not a valid grade";
-  }
-  
+  return "Not a valid grade.";
 }
+
+/**
+ * Colombo's version
+ * First we need a guard clause to filter out invalid values and return the appropriate error.
+ * Then, we connect various if and else-if statements (no final else needed) because we have multiple different conditions to test, each with their own return statement.
+ */
+// function testGrader(grade) {
+//   if (grade < 0 || grade > 100 || typeof grade !== "number") {
+//     return "Not a valid grade.";
+//   }
+
+//   if (grade >= 90) {
+//     return "A";
+//   } else if (grade >= 80) {
+//     return "B";
+//   } else if (grade >= 70) {
+//     return "C";
+//   } else if (grade >= 60) {
+//     return "D";
+//   }
+//   return "F";
+// }
 
 /**
  * #7: daysInTheMonth
@@ -230,19 +260,69 @@ function testGrader(grade) {
  * @returns {28 | 30 | 31 | "Not a valid month."}
  */
 
+/**
+ * Original working answer
+ * Passing all tests
+ */
+// function daysInTheMonth(month) {
+//   if (
+//     month === 1 ||
+//     month === 3 ||
+//     month === 5 ||
+//     month === 7 ||
+//     month === 8 ||
+//     month === 10 ||
+//     month === 12
+//   ) {
+//     return 31;
+//   } else if (month === 4 || month === 6 || month === 9 || month === 11) {
+//     return 30;
+//   } else if (month === 2) {
+//     return 28;
+//   } else {
+//     return "Not a valid month.";
+//   }
+// }
+
+/**
+ * Second, better (allegedly) solution
+ */
+// function daysInTheMonth(month) {
+//   if (month < 1 || month > 12 || typeof month !== "number") {
+//     return "Not a valid month.";
+//   } else if (month === 2) {
+//     return 28;
+//   } else if (month === 4 || month === 6 || month === 9 || month === 11) {
+//     return 30;
+//   } else {
+//     return 31;
+//   }
+// }
+
+/**
+ * Colombo's solution
+ */
+// This is a problem where many different conditions resolve to the same result. We have many possible results so this is a great place to use a switch statement.
 function daysInTheMonth(month) {
- if (month === 1 || month === 3 || month === 5 || month === 7 || month === 8 || month === 10 || month === 12){
-  return 31;
- }
- else if (month === 4 || month === 6 || month === 9 || month === 11){
-  return 30;
- }
- else if (month === 2){
-  return 28;
- }
- else{
-  return "Not a valid month"
- }
+  switch (month) {
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+    case 8:
+    case 10:
+    case 12:
+      return 31;
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+      return 30;
+    case 2:
+      return 28;
+    default:
+      return "Not a valid month.";
+  }
 }
 
 export {

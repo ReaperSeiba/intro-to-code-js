@@ -1,13 +1,13 @@
 import { expect } from "chai";
 import { notFiveChars, isItFiveChars } from "..";
 
-xdescribe("#2: 5 characters", () => {
+describe("#2: 5 characters", () => {
   describe("notFiveChars", () => {
     it("is defined", () => {
       expect(notFiveChars).not.to.be.undefined;
     });
 
-    it("is a string that isn't 5 characters long", () => {
+    it("is a string that is less than 5 characters long", () => {
       expect(notFiveChars).to.be.a("string").to.not.have.lengthOf(5);
     });
   });
@@ -17,7 +17,7 @@ xdescribe("#2: 5 characters", () => {
       expect(isItFiveChars).not.to.be.undefined;
     });
 
-    it("resolves to the String `it's 5 characters`", () => {
+    it("resolves to the String `not 5 characters`", () => {
       expect(isItFiveChars).to.equal("not 5 characters");
     });
   });
