@@ -28,26 +28,26 @@
 - When using loose equality (`==`), you tell JS to convert both values to the same type BEFORE doing your comparison, which leads to unexpected results.
 
 ```js
-7 == "7"      // ✅ true
-0 == false    // ✅ true
-0 == ""       // ✅ true
+7 == "7"; // ✅ true
+0 == false; // ✅ true
+0 == ""; // ✅ true
 
-'0' == 0      // ✅ true
-0 == ''       // ✅ true
-'0' == ''     // ✅ false
+"0" == 0; // ✅ true
+0 == ""; // ✅ true
+"0" == ""; // ✅ false
 ```
 
-- Strict equality (`===`) differs in that it directly compares both values WITHOUT converting their types 
+- Strict equality (`===`) differs in that it directly compares both values WITHOUT converting their types
 
 ## Practical Examples
 
 ### The standalone `if`
 
 ```js
-let favoriteGame = "Resident Evil"
+let favoriteGame = "Resident Evil";
 
 if (favoriteGame === "Crash Bandicoot") {
-  console.log("WOW, great taste.")
+  console.log("WOW, great taste.");
 }
 ```
 
@@ -58,12 +58,12 @@ if (favoriteGame === "Crash Bandicoot") {
 - standalone `else` represents the last in a chain of conditional operations.
 
 ```js
-let foodYouWantRightNow = "Popcorn Shrimp"
+let foodYouWantRightNow = "Popcorn Shrimp";
 
 if (foodYouWantRightNow === "Popcorn Shrimp") {
-  console.log("YEAH, ME TOO!!!!")
+  console.log("YEAH, ME TOO!!!!");
 } else {
-  console.log("Eh, not really in the mood")
+  console.log("Eh, not really in the mood");
 }
 ```
 
@@ -73,16 +73,16 @@ if (foodYouWantRightNow === "Popcorn Shrimp") {
 - You chain `else if` after your `if` statement, and BEFORE your final `else`, if you include an `else` clause
 
 ```js
-let myNewName = "Evelyn"
+let myNewName = "Evie";
 
 if (myNewName === "Cassandra") {
-  console.log("Not this one!!")
-} else if (myNewName === "Evelyn") {
-  console.log("THIS IS THE ONE!")
+  console.log("Not this one!!");
+} else if (myNewName === "Evie") {
+  console.log("THIS IS THE ONE!");
 } else if (myNewName === "Alma") {
-  console.log("Not this one!!!")
+  console.log("Not this one!!!");
 } else {
-  console.log("HUH?")
+  console.log("HUH?");
 }
 ```
 
@@ -92,12 +92,12 @@ if (myNewName === "Cassandra") {
 - To measure inequality, we use `!==`
 
 ```js
-let myNewName = "Evelyn"
+let myNewName = "Evie";
 
-if (myNewName !== "Evelyn") {
-  console.log("THIS IS THE WRONG NAME")
+if (myNewName !== "Evie") {
+  console.log("THIS IS THE WRONG NAME");
 } else {
-  console.log("THIS IS THE ONE!")
+  console.log("THIS IS THE ONE!");
 }
 ```
 
@@ -123,16 +123,17 @@ NOT   !     negation
 ### Logical practice
 
 Order of operations:
-  - Logical NOT
-  - Exponents
-  - Mult/Div
-  - Add/Sub
-  - Numerical comparisons
-  - logical comparisons, AND before OR
+
+- Logical NOT
+- Exponents
+- Mult/Div
+- Add/Sub
+- Numerical comparisons
+- logical comparisons, AND before OR
 
 ```js
-4 < 3 || 2 < 3              // true
-5*3 > 10 && 4 + 6 === 11    // false
+4 < 3 || 2 < 3; // true
+5 * 3 > 10 && 4 + 6 === 11; // false
 ```
 
 ### Nesting practice
@@ -162,16 +163,19 @@ if (num % 2 === 0) {
 // Usage structure
 // conditional expression ? true expression : false expression
 
-const condition = 57 > 3
+const condition = 57 > 3;
 
-const currentlyWearingPants = condition ? "defo wearing pants" : "freeballing" 
+const currentlyWearingPants = condition ? "defo wearing pants" : "freeballing";
 
 // you COULD (never SHOULD) chain ternaries
 
 function example() {
-  return condition1 ? value1
-    : condition2 ? value2
-    : condition3 ? value3
+  return condition1
+    ? value1
+    : condition2
+    ? value2
+    : condition3
+    ? value3
     : value4;
 }
 
@@ -200,35 +204,35 @@ function example() {
 **Individual Cases**
 
 ```js
-const carMake = "Toyota"
+const carMake = "Toyota";
 
 switch (carMake) {
   case "Ford":
-    return "It's a Ford!"
+    return "It's a Ford!";
   case "GM":
-    return "It's a GM!"
+    return "It's a GM!";
   case "Chevy":
-    return "It's a Chevy!"
+    return "It's a Chevy!";
   default:
-    console.log("Sorry it's not American")
+    console.log("Sorry it's not American");
 }
 ```
 
 **Grouped Cases**
 
 ```js
-const fruit = "pineapple"
+const fruit = "pineapple";
 
 switch (fruit) {
   case "Apples":
   case "Pears":
   case "Oranges":
-    console.log("Apples, pears, and oranges are all on sale, 2/$1.")
+    console.log("Apples, pears, and oranges are all on sale, 2/$1.");
     break; // to get us out of the switch after a match
   case "pineapple":
-    console.log("I don't know how much pineapples cost. 2, 3 dollars maybe??")
+    console.log("I don't know how much pineapples cost. 2, 3 dollars maybe??");
     break;
   default:
-    console.log("Honestly, I'm not even sure that that's a fruit.")
+    console.log("Honestly, I'm not even sure that that's a fruit.");
 }
 ```

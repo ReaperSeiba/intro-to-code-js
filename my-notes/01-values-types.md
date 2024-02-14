@@ -46,7 +46,7 @@ var - similar to let but it's global
 
 ```js
 let myNum = 2;
-const myName = "Tyler";
+const myName = "Evie";
 ```
 
 ### Outputting stuff to the console
@@ -65,11 +65,11 @@ We can use variables and their values in strings by using backticks (``) and int
 const num = 5;
 
 // Without string interpolation
-const noInterpolation = "Hi my name is Tyler and I have ";
+const noInterpolation = "Hi my name is Evie and I have ";
 const noInterpolationTheSequel = " dollars in my pockets.";
 
 const otherWay =
-  "Hi my name is Tyler and I have " + num + " dollars in my pockets.";
+  "Hi my name is Evie and I have " + num + " dollars in my pockets.";
 
 console.log(noInterpolation + num + noInterpolationTheSequel);
 console.log(otherWay);
