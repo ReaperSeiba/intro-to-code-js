@@ -24,4 +24,18 @@
  * smallTogetherNow("mIxEd", "CaPiTaLs") => "mixedcapitals"
  */
 
-// Replace this comment with your code.
+// Eve
+// export const smallTogetherNow = (str1, str2) =>
+//   "".concat(str1.toLowerCase(), str2.toLowerCase());
+
+// Long Version
+// export function smallTogetherNow(str1, str2) {
+//   const lowerOne = str1.toLowerCase();
+//   const lowerTwo = str2.toLowerCase();
+
+//   return lowerOne + lowerTwo;
+// }
+
+// One-line answer
+export const smallTogetherNow = (str1, str2) =>
+  str1.toLowerCase().concat(str2.toLowerCase());

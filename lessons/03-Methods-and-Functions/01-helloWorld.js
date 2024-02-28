@@ -12,4 +12,7 @@
  * helloWorld() => "Hello World!"
  */
 
-// Replace this comment with your code.
+// export function helloWorld() {
+//   return "Hello World!";
+// }
+export const helloWorld = () => "Hello World!";

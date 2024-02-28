@@ -27,4 +27,35 @@
  *    "John and Star are the both 14 years old."
  */
 
-// Replace this comment with your code.
+// Eve version
+// export function dogAndOwnerInfo(dogName, dogAge, ownerName, ownerAge) {
+//   if (dogAge * 7 > ownerAge) {
+//     return `${dogName} is older than their owner, ${ownerName}, by ${
+//       dogAge * 7 - ownerAge
+//     } years.`;
+//   } else if (dogAge * 7 < ownerAge) {
+//     return `${ownerName} is older than their dog, ${dogName}, by ${
+//       ownerAge - dogAge * 7
+//     } years.`;
+//   } else if (dogAge * 7 == ownerAge) {
+//     return `${ownerName} and ${dogName} are both ${ownerAge} years old.`;
+//   }
+//   return "Not a valid input";
+// }
+
+export function dogAndOwnerInfo(dogName, dogAge, ownerName, ownerAge) {
+  // Handle age conversion first
+  const dogAgeInHumanYears = dogAge * 7;
+
+  if (dogAgeInHumanYears > ownerAge) {
+    return `${dogName} is older than their owner, ${ownerName}, by ${
+      dogAgeInHumanYears - ownerAge
+    } years.`;
+  } else if (dogAgeInHumanYears < ownerAge) {
+    return `${ownerName} is older than their dog, ${dogName}, by ${
+      ownerAge - dogAgeInHumanYears
+    } years.`;
+  } else {
+    return `${ownerName} and ${dogName} are both ${ownerAge} years old.`;
+  }
+}

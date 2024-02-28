@@ -20,4 +20,4 @@
  * arrayToString(["cat", "dog", "moo"], "+-%") => "cat+-%dog+-%moo"
  */
 
-// Replace this comment with your code.
+export const arrayToString = (array, connector) => array.join(connector);
