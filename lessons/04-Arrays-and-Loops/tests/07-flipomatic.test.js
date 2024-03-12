@@ -16,10 +16,12 @@ import {
 } from "../data/07-flipomatic.data";
 
 xdescribe("#7: flipomatic", () => {
-  expect(flipomatic).to.be.a(
-    "function",
-    "No `flipomatic` function found; please check if defined and exported correctly."
-  );
+  it("`flipomatic` is a function", () => {
+    expect(flipomatic).to.be.a(
+      "function",
+      "No `flipomatic` function found; please check if defined and exported correctly."
+    );
+  });
 
   describe("returns an array", () => {
     it("if there's a 'flip'", () => {

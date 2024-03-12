@@ -8,10 +8,12 @@ import {
 } from "../data/08-uniqueCharsOnly.data";
 
 xdescribe("#8: uniqueCharsOnly", () => {
-  expect(uniqueCharsOnly).to.be.a(
-    "function",
-    "No `uniqueCharsOnly` function found; please check if defined and exported correctly."
-  );
+  it("`uniqueCharsOnly` is a function", () => {
+    expect(uniqueCharsOnly).to.be.a(
+      "function",
+      "No `uniqueCharsOnly` function found; please check if defined and exported correctly."
+    );
+  });
 
   describe("returns an array of the unique characters in the string", () => {
     describe("if the string is one repeating character", () => {

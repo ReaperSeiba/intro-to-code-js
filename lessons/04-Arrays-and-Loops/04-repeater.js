@@ -19,3 +19,11 @@
  * repeater("Hello", 2) => "HelloHello"
  * repeater("abc123", 3) => "abc123abc123abc123"
  */
+
+export function repeater(str, times) {
+  let newStr = "";
+  for (let i = 0; i < times; i++) {
+    newStr += str;
+  }
+  return newStr;
+}

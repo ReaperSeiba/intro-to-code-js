@@ -24,3 +24,42 @@
  * frontOrBack([false, true, false], "front", "remove", 5) => [true, false];
  * frontOrBack(["be", "dog", "ride"], "back", "remove", 5) => ["be", "dog"];
  */
+export function frontOrBack(arr, place, action, value) {
+  if (place === "front") {
+    if (action === "add") {
+      arr.unshift(value);
+    }
+    if (action === "remove") {
+      arr.shift(value);
+    }
+  } else if (place === "back") {
+    if (action === "add") {
+      arr.push(value);
+    }
+    if (action === "remove") {
+      arr.pop(value);
+    }
+  }
+  return arr;
+}
+
+// Christian's answer; more assumptions about data sanity
+// export function frontOrBack(array, place, action, value) {
+//   if (place === "front") {
+//     if (action === "add") {
+//       array.unshift(value);
+//       return array;
+//     } else {
+//       array.shift();
+//       return array;
+//     }
+//   } else {
+//     if (action === "add") {
+//       array.push(value);
+//       return array;
+//     } else {
+//       array.pop();
+//       return array;
+//     }
+//   }
+// }

@@ -16,3 +16,19 @@
  * measurer([1,3,5,7,9]) => 5
  * measurer(["abc", true, { "a": 1, "b": 2 } ]) => 3
  */
+
+/*export function measurer(arr) {
+  let totalNum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    totalNum++;
+  }
+  return totalNum;
+} */
+
+export const measurer = (arr) => {
+  let totalNum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    totalNum++;
+  }
+  return totalNum;
+};

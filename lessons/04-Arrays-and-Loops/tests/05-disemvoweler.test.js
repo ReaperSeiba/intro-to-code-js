@@ -7,11 +7,14 @@ import {
   hasUppercase,
 } from "../data/05-disemvoweler.data";
 
-xdescribe("#5: disemvoweler", () => {
-  expect(disemvoweler).to.be.a(
-    "function",
-    "No `disemvoweler` function found; please check if defined and exported correctly."
-  );
+describe("#5: disemvoweler", () => {
+  it("`disemvoweler` is a function", () => {
+    expect(disemvoweler).to.be.a(
+      "function",
+      "No `disemvoweler` function found; please check if defined and exported correctly."
+    );
+  });
+
   describe("returns a string", () => {
     describe("no vowels -> same as the input string", () => {
       noVowels.forEach(({ str }) => {

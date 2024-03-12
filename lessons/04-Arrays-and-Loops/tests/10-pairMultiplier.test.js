@@ -7,10 +7,12 @@ import {
 } from "../data/10-pairMultiplier.data";
 
 xdescribe("#10: pairMultiplier", () => {
-  expect(pairMultiplier).to.be.a(
-    "function",
-    "No `pairMultiplier` function found; please check if defined and exported correctly."
-  );
+  it("`pairMultiplier` is a function", () => {
+    expect(pairMultiplier).to.be.a(
+      "function",
+      "No `pairMultiplier` function found; please check if defined and exported correctly."
+    );
+  });
 
   describe("returns an array of multiplied numbers, in the correct order", () => {
     describe("when both arrays are the same size", () => {

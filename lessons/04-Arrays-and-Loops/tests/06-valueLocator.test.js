@@ -3,10 +3,12 @@ import { expect } from "chai";
 import { arr, foundVals, notFoundVals } from "../data/06-valueLocator.data";
 
 xdescribe("#6: valueLocator", () => {
-  expect(valueLocator).to.be.a(
-    "function",
-    "No `valueLocator` function found; please check if defined and exported correctly."
-  );
+  it("`valueLocator` is a function", () => {
+    expect(valueLocator).to.be.a(
+      "function",
+      "No `valueLocator` function found; please check if defined and exported correctly."
+    );
+  });
 
   describe("when searchValue is found in the array", () => {
     it("returns phrase containing search term", () => {

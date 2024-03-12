@@ -9,6 +9,8 @@
  *    - when idx is an invalid array index for arr, return "Invalid index."
  *    - when idx is undefined, indexer returns the first value in the array.
  *
+ * CHALLENGE: indexer can be rewritten as a one-liner!
+ *
  * @category 04 - Arrays and Loops
  * @function indexer
  * @param {any[]} arr - array of length >= 1, containing entries of any type
@@ -25,3 +27,23 @@
  * indexer([1], -10) => "Invalid index."
  * indexer([1, 3, "value", 7, 9 ], 53) => "Invalid index."
  */
+export function indexer(arr, idx) {
+  if (idx === undefined) {
+    return arr[0];
+  }
+  if (idx < 0 || idx >= arr.length) {
+    return "Invalid index.";
+  }
+  return arr[idx];
+}
+
+// export function indexer(arr, idx) {
+//   if (idx < -1 || idx > arr.length - 1) {
+//     return "Invalid index.";
+//   }
+
+//   if (idx !== undefined) {
+//     return arr[idx];
+//   }
+//   return arr[0];
+// }

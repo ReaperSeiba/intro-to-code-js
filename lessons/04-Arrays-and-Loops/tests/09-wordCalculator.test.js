@@ -10,10 +10,12 @@ import {
 } from "../data/09-wordCalculator.data";
 
 xdescribe("#9: wordCalculator", () => {
-  expect(wordCalculator).to.be.a(
-    "function",
-    "No `wordCalculator` function found; please check if defined and exported correctly."
-  );
+  it("`wordCalculator` is a function", () => {
+    expect(wordCalculator).to.be.a(
+      "function",
+      "No `wordCalculator` function found; please check if defined and exported correctly."
+    );
+  });
 
   it("returns a number", () => {
     allCalcs.forEach(({ nums, ops }) => {

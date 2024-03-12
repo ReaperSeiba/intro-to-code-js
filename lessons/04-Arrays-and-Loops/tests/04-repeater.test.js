@@ -1,11 +1,13 @@
 import { repeater } from "../04-repeater";
 import { expect } from "chai";
 
-xdescribe("#4: repeater", () => {
-  expect(repeater).to.be.a(
-    "function",
-    "No `repeater` function found; please check if defined and exported correctly."
-  );
+describe("#4: repeater", () => {
+  it("`repeater` is a function", () => {
+    expect(repeater).to.be.a(
+      "function",
+      "No `repeater` function found; please check if defined and exported correctly."
+    );
+  });
 
   describe("returns a string", () => {
     it("repeated 0 times -> an empty string", () => {

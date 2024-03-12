@@ -1,11 +1,13 @@
 import { frontOrBack } from "../03-frontOrBack";
 import { expect } from "chai";
 
-xdescribe("#3: frontOrBack", () => {
-  expect(frontOrBack).to.be.a(
-    "function",
-    "No `frontOrBack` function found; please check if defined and exported correctly."
-  );
+describe("#3: frontOrBack", () => {
+  it("`frontOrBack` is a function", () => {
+    expect(frontOrBack).to.be.a(
+      "function",
+      "No `frontOrBack` function found; please check if defined and exported correctly."
+    );
+  });
 
   describe("returns a correctly modified array", () => {
     it('when place = "front"; action = "add"', () => {
