@@ -29,12 +29,43 @@
 
 const vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
 export function disemvoweler(str) {
+  let vowelessStr = "";
   for (let i = 0; i < str.length; i++) {
     let currChar = str[i];
-
-    if (vowels.includes(currChar)) {
-      str.replace(currChar, "");
+    if (!vowels.includes(currChar)) {
+      vowelessStr += currChar;
     }
   }
-  return str;
+  return vowelessStr;
 }
+
+// Christian's version
+// export function disemvoweler(string) {
+//   const vowels = ["a", "e", "i", "o", "u"];
+//   let baseStr = "";
+
+//   for (let i = 0; i < string.length; i++) {
+//     // Grab curr char and vowel
+//     const currChar = string[i];
+
+//     // If the lowercase version of currChar isn't a vowel, add it to baseStr
+//     if (!vowels.includes(currChar.toLowerCase())) {
+//       baseStr += currChar;
+//     }
+//   }
+//   return baseStr;
+// }
+
+//export const disemvowler = (str) => str.conc
+
+// OLD
+// export function disemvoweler(str) {
+//   for (let i = 0; i < str.length; i++) {
+//     let currChar = str[i];
+
+//     if (!vowels.includes(currChar)) {
+//       str += currChar;
+//     }
+//   }
+//   return str;
+// }

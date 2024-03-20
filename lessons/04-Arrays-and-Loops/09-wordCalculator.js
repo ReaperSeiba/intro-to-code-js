@@ -9,7 +9,7 @@
  * - "mul": multiplication
  * - "div": division
  * - "rem": remainder
- * - "exp": exponentiation
+ * - "pow": exponentiation
  *
  * wordCalculator ignores the rules of PEMDAS/BEDMAS and handles operations as passed into the operations array from left to right, one at a time.
  * wordCalculator returns the total of all the values and operations passed into it.
@@ -31,3 +31,62 @@
  * wordCalculator([7, 11, 12], ["sub", "mul", "rem"]) => -5
  *  // 0 - 7 = 7 * 11 = -77 % 12 = -5
  */
+export function wordCalculator(nums, operations) {
+  let result = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if (operations[i] === "add") {
+      result += nums[i];
+    }
+    if (operations[i] === "sub") {
+      result -= nums[i];
+    }
+    if (operations[i] === "mul") {
+      result *= nums[i];
+    }
+    if (operations[i] === "div") {
+      result /= nums[i];
+    }
+    if (operations[i] === "rem") {
+      result %= nums[i];
+    }
+    if (operations[i] === "pow") {
+      result **= nums[i];
+    }
+  }
+  return result;
+}
+
+// Christian's version
+// Both input arrays are the same size
+// Use the i pointer from the loop to grab current entry per iteration
+export function wordCalculator(nums, operations) {
+  let result = 0;
+
+  for (let i = 0; i < nums.length; i++) {
+    const currNum = nums[i];
+    const currOp = operations[i];
+    switch (currOp) {
+      case "add":
+        result += currNum;
+        break;
+      case "sub":
+        result -= currNum;
+        break;
+      case "mul":
+        result *= currNum;
+        break;
+      case "div":
+        result /= currNum;
+        break;
+      case "rem":
+        result %= currNum;
+        break;
+      case "pow":
+        result **= currNum;
+        break;
+      default:
+        break;
+    }
+  }
+  return result;
+}

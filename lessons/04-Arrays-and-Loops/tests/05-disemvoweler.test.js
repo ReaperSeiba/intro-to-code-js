@@ -46,7 +46,7 @@ describe("#5: disemvoweler", () => {
     });
   });
 
-  xdescribe("BONUS: can handle UPPERCASE letters", () => {
+  describe("BONUS: can handle UPPERCASE letters", () => {
     hasUppercase.forEach(({ str, result }) => {
       it(`'${str}' -> '${result}'`, () => {
         const testResult = disemvoweler(str);

@@ -16,14 +16,14 @@ export const zeroStarts = [
 export const oneCalcs = [
   { nums: [1], ops: ["add"], result: 1 },
   { nums: [2], ops: ["sub"], result: -2 },
-  { nums: [3], ops: ["mult"], result: 0 },
+  { nums: [3], ops: ["mul"], result: 0 },
   { nums: [4], ops: ["div"], result: 0 },
   { nums: [5], ops: ["mod"], result: 0 },
   { nums: [6], ops: ["pow"], result: 0 },
 ];
 
 export const twoCalcs = [
-  { nums: [5, 6], ops: ["add", "mult"], result: 30 },
+  { nums: [5, 6], ops: ["add", "mul"], result: 30 },
   { nums: [4, 2], ops: ["sub", "div"], result: -2 },
   { nums: [7, -19], ops: ["add", "rem"], result: 7 },
   { nums: [11, 2], ops: ["sub", "pow"], result: 121 },
@@ -32,12 +32,12 @@ export const twoCalcs = [
 export const multiCalcs = [
   {
     nums: [7, 11, 12],
-    ops: ["sub", "mult", "add"],
+    ops: ["sub", "mul", "add"],
     result: -65,
   },
   {
     nums: [6, 10, 3, 8],
-    ops: ["add", "mult", "div", "sub"],
+    ops: ["add", "mul", "div", "sub"],
     result: 12,
   },
   {
@@ -47,7 +47,7 @@ export const multiCalcs = [
   },
   {
     nums: [-999, 9, 30, 11, 11, 5],
-    ops: ["add", "rem", "mult", "sub", "div", "pow"],
+    ops: ["add", "rem", "mul", "sub", "div", "pow"],
     result: -1,
   },
 ];

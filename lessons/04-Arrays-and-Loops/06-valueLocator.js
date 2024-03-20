@@ -23,14 +23,19 @@
  *  "not cannot be found in the array [zyz,xyx,abc,bd]."
  */
 export function valueLocator(searchVal, arr) {
-  let index = 0;
-  {
-    for (let i = 0; i < arr.length; i++) {
-      index++;
-      if (arr[index] === searchVal) {
-        return `${searchVal} is at index ${index} of the array ${arr}.`;
-      }
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === searchVal) {
+      return `${searchVal} is at index ${i} of the array [${arr}].`;
     }
   }
-  return `${searchVal} cannot be found in the array ${arr}.`;
+  return `${searchVal} cannot be found in the array [${arr}].`;
 }
+
+// Christian's version
+// export function valueLocator(searchVal, arr) {
+//   const idx = arr.indexOf(searchVal);
+//   if (idx !== -1) {
+//     return `${searchVal} is at index ${idx} of the array [${arr}].`;
+//   }
+//   return `${searchVal} cannot be found in the array [${arr}].`;
+// }

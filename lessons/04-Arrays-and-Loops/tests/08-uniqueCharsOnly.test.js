@@ -7,7 +7,7 @@ import {
   allUniqueLetters,
 } from "../data/08-uniqueCharsOnly.data";
 
-xdescribe("#8: uniqueCharsOnly", () => {
+describe("#8: uniqueCharsOnly", () => {
   it("`uniqueCharsOnly` is a function", () => {
     expect(uniqueCharsOnly).to.be.a(
       "function",

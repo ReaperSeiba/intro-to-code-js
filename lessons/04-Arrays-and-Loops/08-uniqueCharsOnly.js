@@ -18,3 +18,12 @@
  * uniqueCharsOnly("abc") => ['a', 'b', 'c']
  * uniqueCharsOnly("abcbabcbabcbabcba") => ['a', 'b', 'c']
  */
+export function uniqueCharsOnly(str) {
+  let charArr = [];
+  for (let i = 0; i < str.length; i++) {
+    if (!charArr.includes(str[i])) {
+      charArr.push(str[i]);
+    }
+  }
+  return charArr;
+}
