@@ -27,3 +27,5 @@ export function uniqueCharsOnly(str) {
   }
   return charArr;
 }
+
+// export const uniqueCharsOnly = (str) => Array.from(new Set(input.split("")));

@@ -7,6 +7,8 @@
  *
  * If `times` is a negative value, return an empty string.
  *
+ * CHALLENGE: repeater can be rewritten as a one-liner!
+ *
  * @category 04 - Arrays and Loops
  * @function repeater
  * @param {String} str - the input string
@@ -20,10 +22,12 @@
  * repeater("abc123", 3) => "abc123abc123abc123"
  */
 
-export function repeater(str, times) {
-  let newStr = "";
-  for (let i = 0; i < times; i++) {
-    newStr += str;
-  }
-  return newStr;
-}
+// export function repeater(str, times) {
+//   let newStr = "";
+//   for (let i = 0; i < times; i++) {
+//     newStr += str;
+//   }
+//   return newStr;
+// }
+
+export const repeater = (str, times) => (times > 0 ? str.repeat(times) : "");

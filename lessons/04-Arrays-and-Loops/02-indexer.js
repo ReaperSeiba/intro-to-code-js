@@ -27,15 +27,15 @@
  * indexer([1], -10) => "Invalid index."
  * indexer([1, 3, "value", 7, 9 ], 53) => "Invalid index."
  */
-export function indexer(arr, idx) {
-  if (idx === undefined) {
-    return arr[0];
-  }
-  if (idx < 0 || idx >= arr.length) {
-    return "Invalid index.";
-  }
-  return arr[idx];
-}
+// export function indexer(arr, idx) {
+//   if (idx === undefined) {
+//     return arr[0];
+//   }
+//   if (idx < 0 || idx >= arr.length) {
+//     return "Invalid index.";
+//   }
+//   return arr[idx];
+// }
 
 // export function indexer(arr, idx) {
 //   if (idx < -1 || idx > arr.length - 1) {
@@ -47,3 +47,10 @@ export function indexer(arr, idx) {
 //   }
 //   return arr[0];
 // }
+
+export const indexer = (arr, idx) =>
+  idx < -1 || idx > arr.length - 1
+    ? "Invalid index."
+    : idx !== undefined
+    ? arr[idx]
+    : arr[0];

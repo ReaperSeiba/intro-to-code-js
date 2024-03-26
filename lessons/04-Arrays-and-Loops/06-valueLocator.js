@@ -39,3 +39,8 @@ export function valueLocator(searchVal, arr) {
 //   }
 //   return `${searchVal} cannot be found in the array [${arr}].`;
 // }
+
+// export const valueLocator = (searchVal, arr) =>
+//   arr.indexOf(searchVal) !== -1
+//     ? `${searchVal} is at index ${idx} of the array ${arr}.`
+//     : `${searchVal} cannot be found in the array ${arr}.`;

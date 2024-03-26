@@ -27,17 +27,17 @@
 // HINT
 // What do you need to do when you encounter a vowel in your str?
 
-const vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
-export function disemvoweler(str) {
-  let vowelessStr = "";
-  for (let i = 0; i < str.length; i++) {
-    let currChar = str[i];
-    if (!vowels.includes(currChar)) {
-      vowelessStr += currChar;
-    }
-  }
-  return vowelessStr;
-}
+// const vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
+// export function disemvoweler(str) {
+//   let vowelessStr = "";
+//   for (let i = 0; i < str.length; i++) {
+//     let currChar = str[i];
+//     if (!vowels.includes(currChar)) {
+//       vowelessStr += currChar;
+//     }
+//   }
+//   return vowelessStr;
+// }
 
 // Christian's version
 // export function disemvoweler(string) {
@@ -69,3 +69,11 @@ export function disemvoweler(str) {
 //   }
 //   return str;
 // }
+
+export const disemvoweler = (string) =>
+  string
+    .split("")
+    .filter(
+      (letter) => !["a", "e", "i", "o", "u"].includes(letter.toLowerCase())
+    )
+    .join("");
