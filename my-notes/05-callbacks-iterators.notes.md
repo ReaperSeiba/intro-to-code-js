@@ -405,6 +405,159 @@ console.log(arr.find(divByThree));
 // -12
 ```
 
+## Returning functions from functions
+
+You can write a function that returns a function.
+
+One of the reasons that we would create a function that returns a function is to standardize a set of processes based off of a differing set of inputs.
+
+```js
+// Define a function bananaSlapper that accepts a number input. bananaSlapper returns a function that uses no parameters that prints out the statement "WHACK! I have slapped a banana!" input number of times.
+
+function bananaSlapper(num) {
+  return function () {
+    for (let i = 0; i < num; i++) {
+      console.log("WHACK! I have slapped a banana!");
+    }
+    return `I have slapped a banana ${num} times.`;
+  };
+}
+
+const threeSlap = bananaSlapper(3);
+console.log(threeSlap());
+console.log(threeSlap.toString());
+
+// Logged:
+// WHACK! I have slapped a banana!
+// WHACK! I have slapped a banana!
+// WHACK! I have slapped a banana!
+// WHACK! I have slapped a banana!
+// WHACK! I have slapped a banana!
+// I have slapped a banana 5 times.
+
+// Notice that the stringified function output DOES NOT substitute the enclosed value, so this means that our returned function remembers the num input separately as part of the bundle.
+
+// function () {
+//   for (let i = 0; i < num; i++) {
+//     console.log("WHACK! I have slapped a banana!");
+//   }
+//   return `I have slapped a banana ${num} times.`;
+// }
+```
+
+### Remembering things to use later - closure
+
+A closure is a function that has access to it's parent's scope even after the parent function has closed.
+
+It's a combination of a function bundled together, literally enclosed, with references to it's surrounding state; its lexical enviroment.
+
+Let's breakdown `bananaSlapper`:
+
+```js
+// bananaSlapper is a function that accepts an input (num) that returns a function that uses the input (num) it stored from its parent scope. The returned bundle of stored input and function can then be called, and that returned function will run that function's instruction set using the stored value.
+
+function bananaSlapper(num) {
+  return function () {
+    for (let i = 0; i < num; i++) {
+      console.log("WHACK! I have slapped a banana!");
+    }
+    return `I have slapped a banana ${num} times.`;
+  };
+}
+```
+
+#### Going deeper
+
+```js
+// Define a function called identity. identity returns its own input, regardless of whatever function you give it.
+function identity(input) {
+  return input;
+}
+
+// anotherLayer is a variable that is assigned the function identity with the parameter of another function bananaSlapper that has it's own parameter of 3. Identity is a function that returns its own input, in this case bananaSlapper(3), which returns a function that uses it's parent's stored variable in this case 3. After execution anotherLayer is assigned the return from bananaSlapper, which is now a callable function.
+const anotherLayer = identity(bananaSlapper(3));
+console.log(anotherLayer());
+```
+
+### Partial functions aka currying
+
+Currying is the process of turning a function from (n) number of arguments into a chain of nested (n) functions from a single argument.
+
+A curried function is a set of functions generated from a single argument.
+
+```js
+// Define a function that accepts three nums, x,y,z and returns their sum.
+
+function threeSum(x, y, z) {
+  return x + y + z;
+}
+
+console.log(threeSum(3, 5, 8));
+
+// Define a function threeSumInPartials that returns a nested chain of 3 single-input functions and ultimately returns their combined sum.
+
+function threeSumInPartials(x) {
+  return function (y) {
+    // remembers x from parent
+    return function (z) {
+      // remembers x and y from both parents
+      return x + y + z;
+    };
+  };
+}
+
+console.log(threeSumInPartials(3)(5)(8));
+```
+
+#### Currying with Callbacks
+
+You can also curry with functions, since functions are just fancy data.
+
+```js
+// Define a function doItTwice that accepts a function and returns an enclosed function that accepts an arg. That enclosed function returns the result of running once on the arg and once on its result.
+
+// Define a function doItTwice that accepts a function and returns an enclosed function that accepts an arg. That enclosed function returns the result of running once on the arg and once on its result.
+
+// const doItTwice = (fn) => (arg) => fn(fn(arg));
+
+// is the same as
+
+function doItTwice(fn) {
+  return function (arg) {
+    return fn(fn(arg));
+  };
+}
+
+const rootTwice = doItTwice(Math.sqrt);
+const result = rootTwice(256);
+console.log(result); // Math.sqrt(Math.sqrt(256)) => 4
+```
+
+This means our `threeSumInPartials` function from before can be written more concisely as
+
+```js
+const threeSumInPartials = (x) => (y) => (z) => x + y + z;
+```
+
+## Run it IMMEDIATELY - Immediately Invoked Functional Expressions
+
+An IIFE is a functional expression that you define and call immediately with a value.
+
+```js
+// Define a function that accepts a array of name strings and says hi to everyone in the array. Call that immediately with the array ['John', 'Eve', 'Christian']
+(function (arr) {
+  for (let i = 0; i < arr.length; i++) {
+    console.log(`Hi ${arr[i]}`);
+  }
+})(["John", "Eve", "Christian"]);
+
+// is the same as
+
+sayHi(["John", "Eve", "Christian"]);
+// if sayHi was the pre-stored definition for that function
+// it fits the pattern of functionDefinition(valuesToInvokeWith)
+```
+
 ## Reference Links
 
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
@@ -412,3 +565,4 @@ console.log(arr.find(divByThree));
 - https://javascript.plainenglish.io/10-important-javascript-array-methods-you-must-know-bd791cbd6e43
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce#how_reduce_works_with_an_initial_value
 - [Example of a callback with manual inputs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter#parameters)
+- https://developer.mozilla.org/en-US/docs/Glossary/IIFE

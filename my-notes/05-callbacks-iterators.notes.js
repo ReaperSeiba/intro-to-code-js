@@ -130,7 +130,7 @@ const isEven = (val) => val % 2 === 0;
 // Define an inline map callback that uppercases each string in an array
 const strs = ["hello", "bye", "banana", "water"];
 
-console.log(strs.map((str) => str.toUpperCase()));
+// console.log(strs.map((str) => str.toUpperCase()));
 
 // Define a filter cb that removes all elements from an array with odd indexes.
 
@@ -152,18 +152,100 @@ const setOfArrs = [[1, 2, 3], [4], [], [6, 7, 8, 9], [10, 11]];
 
 const someNums = [123, 745, 5, 34, 875, 99];
 
-console.log(
-  someNums.filter((ele, idx, arr) => {
-    // KEEP: elements that are larger than their next element
-    if (ele > arr[idx + 1] || arr[idx + 1] === undefined) {
-      return true;
-    }
-    return false;
-  })
-);
+// console.log(
+//   someNums.filter((ele, idx, arr) => {
+//     // KEEP: elements that are larger than their next element
+//     if (ele > arr[idx + 1] || arr[idx + 1] === undefined) {
+//       return true;
+//     }
+//     return false;
+//   })
+// );
 
 // is the same thing as
 
-console.log(
-  someNums.filter((e, i, arr) => e > arr[i + 1] || arr[i + 1] === undefined)
-);
+// console.log(
+//   someNums.filter((e, i, arr) => e > arr[i + 1] || arr[i + 1] === undefined)
+// );
+
+// Define a function bananaSlapper that accepts a number input. bananaSlapper returns a function that uses no parameters that prints out the statement "WHACK! I have slapped a banana!" input number of times.
+
+function bananaSlapper(num) {
+  return function () {
+    for (let i = 0; i < num; i++) {
+      console.log("WHACK! I have slapped a banana!");
+    }
+    return `I have slapped a banana ${num} times.`;
+  };
+}
+
+const fiveSlap = bananaSlapper(5);
+const threeSlap = bananaSlapper(3);
+// console.log(threeSlap.toString());
+// console.log(fiveSlap());
+// console.log(fiveSlap.toString());
+
+// Define a function called identity. identity returns its own input, regardless of whatever function you give it.
+function identity(input) {
+  return input;
+}
+
+const myTwoSum = identity((a, b) => a + b);
+
+// console.log(myTwoSum(1, 2));
+
+const anotherLayer = identity(bananaSlapper(3));
+// console.log(anotherLayer());
+
+// Define a function that accepts three nums, x,y,z and returns their sum.
+
+function threeSum(x, y, z) {
+  return x + y + z;
+}
+
+// console.log(threeSum(3, 5, 8));
+
+// Define a function threeSumInPartials that returns a nested chain of 3 single-input functions and ultimately returns their combined sum.
+
+// function threeSumInPartials(x) {
+//   return function (y) {
+//     // remembers x from parent
+//     return function (z) {
+//       // remembers x and y from both parents
+//       return x + y + z;
+//     };
+//   };
+// }
+
+const threeSumInPartials = (x) => (y) => (z) => x + y + z;
+
+// console.log(threeSumInPartials(3)(5)(8));
+
+// Define a function doItTwice that accepts a function and returns an enclosed function that accepts an arg. That enclosed function returns the result of running once on the arg and once on its result.
+
+// const doItTwice = (fn) => (arg) => fn(fn(arg));
+
+// is the same as
+
+function doItTwice(fn) {
+  return function (arg) {
+    return fn(fn(arg));
+  };
+}
+
+const rootTwice = doItTwice(Math.sqrt);
+const result = rootTwice(256);
+// console.log(result);
+
+// Define a function that accepts a array of name strings and says hi to everyone in the array. Call that immediately with the array ['John', 'Eve', 'Christian']
+(function (arr) {
+  for (let i = 0; i < arr.length; i++) {
+    console.log(`Hi ${arr[i]}`);
+  }
+})(["John", "Eve", "Christian"]);
+
+// is the same as
+
+sayHi(["John", "Eve", "Christian"]);
+// if sayHi was the pre-stored definition for that function
+// it fits the pattern of functionDefinition(valuesToInvokeWith)
