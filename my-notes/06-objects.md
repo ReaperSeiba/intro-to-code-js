@@ -9,12 +9,21 @@
     - [Variable access](#variable-access)
     - [Complex access](#complex-access)
       - [Complex assignments](#complex-assignments)
+  - [Shorthand assignment](#shorthand-assignment)
+  - [Destructuring: Quickly breaking down an object](#destructuring-quickly-breaking-down-an-object)
   - [Object mutation (assigning values to an object/sub-object)](#object-mutation-assigning-values-to-an-objectsub-object)
     - [Note on nested assignment](#note-on-nested-assignment)
   - [Removing properties](#removing-properties)
   - [PBR vs PBV: Object edition](#pbr-vs-pbv-object-edition)
   - [Methods: Object functions](#methods-object-functions)
     - [Method Shorthand](#method-shorthand)
+  - [Types: Objects, and OBJECTS](#types-objects-and-objects)
+  - [Talking about `this`](#talking-about-this)
+    - [What is `this`?](#what-is-this)
+    - [`this` is self-referential](#this-is-self-referential)
+    - [`this` is evaluated at run-time](#this-is-evaluated-at-run-time)
+    - [`this` as the global object](#this-as-the-global-object)
+    - [Arrow functions do NOT have a `this` context](#arrow-functions-do-not-have-a-this-context)
   - [Relevant Links](#relevant-links)
 
 ## What is an object?
@@ -140,6 +149,76 @@ obj9.nest.grades[0].grade = 12;
 console.log(obj9.nest.grades);
 ```
 
+## Shorthand assignment
+
+You can quickly create key values using existing variables through shorthand object assignment. All you need to do is reference the name of the variable inside of the object and the object will use the variable name as the key and it's value as the new assigned value.
+
+```js
+const num = 6;
+const str = "fish";
+const bool = false;
+const arr = [4, 5, 6];
+const obj = { hi: "mom" };
+const fn = () => "yo";
+
+const shorthand = {
+  num,
+  str,
+  bool,
+  arr,
+  obj,
+  fn,
+};
+
+console.log(shorthand);
+// {
+//   num: 6,
+//   str: 'fish',
+//   bool: false,
+//   arr: [ 4, 5, 6 ],
+//   obj: { hi: 'mom' },
+//   fn: [
+// }
+```
+
+## Destructuring: Quickly breaking down an object
+
+Destructuring is the process that works in the reverse manner as shorthand assignment. Where shorthand assignment uses a variable to extract a key name and value for into an object, destructuring uses an objects KV pair to extract variables out.
+
+```js
+// object with 3 keys -- date, id, entries
+const scheduleData = {
+  date: "03.27",
+  id: "03.27",
+  entries: [
+    {
+      start_time: "2021-03-27T05:32:00+0000",
+      end_time: "2021-03-27T14:31:00+0000",
+      scheduled_show: {
+        mix_title: null,
+        featured_residents: [
+          {
+            mix_resident: {
+              resident_name: "vel",
+              _meta: {
+                uid: "dev-res-thank-you-scientist",
+                type: "resident",
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+};
+
+// Destructuring assignment creates three variables using the key names and their respective values
+const { entries, date, id } = scheduleData;
+
+// Now that they're just variables, use them as you please.
+console.log(date, id); // "03.27", "03.27"
+```
+
 ## Object mutation (assigning values to an object/sub-object)
 
 You can modify objects and add key value pairs after it's initial declaration by simply using dot-notation with your desired keyname and assigning it some value.
@@ -259,6 +338,159 @@ const methods = {
 methods.printName();
 ```
 
+## Types: Objects, and OBJECTS
+
+It's important to remember that in JS objects are both a data type and a data structure. Arrays are object like collections that are one of many different collection types available in JS.
+
+```js
+let myArray = ["ketchup", "mustard", "relish"];
+
+const myObj = {
+  hotdog: "hot dog",
+  hamburger: "hamburger",
+  cheeseburger: "cheeseburger",
+};
+
+console.log("arr", typeof myArray); // "object"
+console.log("obj", typeof myObj); // "object"
+```
+
+We can distinguish between arrays and key valued object by using the `Array.isArray()` method on the value we want to check. This method returns a simple boolean as to whether the value is an array.
+
+```js
+console.log("arr", Array.isArray(myArray)); // true
+console.log("obj", Array.isArray(myObj)); // false
+```
+
+## Talking about `this`
+
+### What is `this`?
+
+The `this` keyword refers to the context where a piece of code, such as a function's body, is supposed to run. Most typically, it is used in object methods, where `this` refers to the object that the method is attached to. `this` thus allowing the same method to be used on different objects.
+
+### `this` is self-referential
+
+The `this` keyword when used inside object methods allows you to reference the object that you are executing within.
+
+```js
+let j = {
+  name: "Jerry",
+  age: 47,
+  sayHi() {
+    console.log(this.name);
+  },
+};
+
+// console.log(j.sayHi()); // "Jerry"
+```
+
+### `this` is evaluated at run-time
+
+As a standalone reference, this particularly example within a function does not error. That is because `this` is evalulated during the runtime depending on the context.
+
+```js
+function what() {
+  console.log(this.name);
+}
+
+what();
+```
+
+This is an important thing to understand because context can be changed before `this` is evaluated.
+
+```js
+function what() {
+  console.log(this.name);
+}
+
+const p1 = { name: "Tom" };
+const p2 = { name: "Jill" };
+
+// Assigning the function what to a property changes `this` to the specific object it's assigned to.
+p1.w = what;
+p2.w = what;
+
+p1.w(); // "Tom"
+p2.w(); // "Jerry"
+```
+
+### `this` as the global object
+
+Changing the console.log call within the function to simply output `this` again follows the same rule of context-specific evaluation. In this context when we call the what function, the context is the global object, so the global object is logged, in this specific case the node environment we are running this file in.
+
+```js
+function what() {
+  console.log(this);
+}
+
+what(); // <- in the global scope, therefore context is global
+
+// Logs the global object: details about our node env
+// <ref *1> Object [global] {
+//   global: [Circular *1],
+//   queueMicrotask: [Function: queueMicrotask],
+//   clearImmediate: [Function: clearImmediate],
+//   setImmediate: [Function: setImmediate] {
+//     [Symbol(nodejs.util.promisify.custom)]: [Getter]
+//   },
+//   structuredClone: [Function: structuredClone],
+//   clearInterval: [Function: clearInterval],
+//   clearTimeout: [Function: clearTimeout],
+//   setInterval: [Function: setInterval],
+//   setTimeout: [Function: setTimeout] {
+//     [Symbol(nodejs.util.promisify.custom)]: [Getter]
+//   },
+//   atob: [Function: atob],
+//   btoa: [Function: btoa],
+//   performance: Performance {
+//     nodeTiming: PerformanceNodeTiming {
+//       name: 'node',
+//       entryType: 'node',
+//       startTime: 0,
+//       duration: 33.71710000000894,
+//       nodeStart: 2.279299999587238,
+//       v8Start: 4.986399999819696,
+//       bootstrapComplete: 25.287800000049174,
+//       environment: 13.071599999442697,
+//       loopStart: -1,
+//       loopExit: -1,
+//       idleTime: 0
+//     },
+//     timeOrigin: 1715125716073.41
+//   },
+//   fetch: [AsyncFunction: fetch]
+// }
+```
+
+### Arrow functions do NOT have a `this` context
+
+Arrow functions are special they don't have their own `this`. If we reference `this` from an arrow function it's taken from the normal outer context.
+
+```js
+// is undefined
+const whoa = {
+  name: "Sandy",
+  sayHi: () => console.log(this.name),
+};
+
+whoa.sayHi(); // undefined
+
+// is "Sandy"
+const whoa = {
+  name: "Sandy",
+  sayHi() {
+    let arrow = () => {
+      console.log(this.name);
+    };
+    arrow();
+  },
+};
+
+whoa.sayHi(); // "Sandy"
+```
+
+This is why you don't ever really want to use arrow functions WHEN YOU NEED a `this` context.
+
 ---
 
 ## Relevant Links
@@ -267,3 +499,5 @@ methods.printName();
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors
 - https://medium.com/front-end-weekly/understanding-pass-by-value-and-pass-by-reference-in-javascript-8e2a0806b175
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_objects#defining_methods
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this

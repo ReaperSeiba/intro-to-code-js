@@ -104,13 +104,13 @@ const methods = {
   },
 };
 
-methods.helloWorld();
+// methods.helloWorld();
 
 // assign methods a function goodbyeWorld
 methods.goodbyeWorld = function () {
   console.log("Goodbye World");
 };
-methods.goodbyeWorld();
+// methods.goodbyeWorld();
 
 // assign methods a welcomeBackWorld function WITHOUT using a direct function expression assignment
 
@@ -120,4 +120,113 @@ function welcomeBackWorld() {
 
 methods.welcomeBackWorld = welcomeBackWorld;
 
-methods.printName();
+// methods.printName();
+
+// define an array of 3 elements
+// define an object with three k-v pairs
+
+let myArray = ["ketchup", "mustard", "relish"];
+
+const myObj = {
+  hotdog: "hot dog",
+  hamburger: "hamburger",
+  cheeseburger: "cheeseburger",
+};
+
+// console.log("arr", typeof myArray);
+// console.log("obj", typeof myObj);
+
+// console.log("arr", Array.isArray(myArray));
+// console.log("obj", Array.isArray(myObj));
+
+const num = 6;
+const str = "fish";
+const bool = false;
+const arr = [4, 5, 6];
+const obj = { hi: "mom" };
+const fn = () => "yo";
+
+const shorthand = {
+  num,
+  str,
+  bool,
+  arr,
+  obj,
+  fn,
+};
+
+// console.log(num);
+// console.log(shorthand.num);
+
+shorthand.num = 8;
+// console.log(num);
+
+// console.log("shorter", shorthand);
+
+const scheduleData = {
+  date: "03.27",
+  id: "03.27",
+  entries: [
+    {
+      start_time: "2021-03-27T05:32:00+0000",
+      end_time: "2021-03-27T14:31:00+0000",
+      scheduled_show: {
+        mix_title: null,
+        featured_residents: [
+          {
+            mix_resident: {
+              resident_name: "vel",
+              _meta: {
+                uid: "dev-res-thank-you-scientist",
+                type: "resident",
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+};
+
+const { entries, date, id } = scheduleData;
+
+// console.log(date, id);
+
+let j = {
+  name: "Jerry",
+  age: 47,
+  sayHi() {
+    console.log(this.name);
+  },
+};
+
+// console.log(j.sayHi());
+
+function what() {
+  console.log(this);
+}
+
+// what();
+
+const p1 = { name: "Tom" };
+const p2 = { name: "Jill" };
+
+p1.w = what;
+p2.w = what;
+
+// p1.w();
+// p2.w();
+
+const whoa = {
+  name: "Sandy",
+  // sayHi: () => console.log(this.name),
+
+  sayHi() {
+    let arrow = () => {
+      console.log(this.name);
+    };
+    arrow();
+  },
+};
+
+whoa.sayHi();
