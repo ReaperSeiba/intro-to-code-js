@@ -24,6 +24,17 @@
     - [`this` is evaluated at run-time](#this-is-evaluated-at-run-time)
     - [`this` as the global object](#this-as-the-global-object)
     - [Arrow functions do NOT have a `this` context](#arrow-functions-do-not-have-a-this-context)
+  - [Spread Syntax, for Objects](#spread-syntax-for-objects)
+  - [Optional Chaining](#optional-chaining)
+    - [Variant Usage](#variant-usage)
+      - [`?.()` -- Optional invocation](#----optional-invocation)
+      - [`?.[]` -- Optional property access](#----optional-property-access)
+  - [Looping through Objects](#looping-through-objects)
+    - [`for...in` loop](#forin-loop)
+    - [Using Object methods](#using-object-methods)
+      - [Object.keys](#objectkeys)
+      - [Object.values](#objectvalues)
+      - [Object.entries](#objectentries)
   - [Relevant Links](#relevant-links)
 
 ## What is an object?
@@ -490,6 +501,193 @@ whoa.sayHi(); // "Sandy"
 ```
 
 This is why you don't ever really want to use arrow functions WHEN YOU NEED a `this` context.
+
+## Spread Syntax, for Objects
+
+Spread syntax is written out as an ellipsis, `...`, and allows you to expand an iterable into its individual elements.
+
+Spread syntax also allows you to clone objects in an immutable way.
+
+**IMMUTABLE:** Cannot mutate.
+
+```js
+const base = {
+  temperature: "hot",
+  weather: "sunny",
+};
+
+const withCity = {
+  city: "Cattaraugus",
+  ...base,
+};
+
+console.log(withCity);
+// { city: 'Cattaraugus', temperature: 'hot', weather: 'sunny' }
+```
+
+## Optional Chaining
+
+Optional Chaining is a recent addition to JS that allows us to handle one of the classic challenges with working with objects.
+
+Optional chaining allows us to optionally check an evaluate nested key values and stop the evaluation if the value before `?.` is either `undefined` or `null` and then returns `undefined`.
+
+```js
+const person2 = {};
+
+// console.log(person2.address.streetAddr);
+// TypeError: Cannot read properties of undefined (reading "streetAddr")
+
+// Method below does the existence and provides the "not found" value to use
+console.log(
+  person2
+    ? person2.address
+      ? person2.address.streetAddr
+        ? person2.address.streetAddr.aptNum
+        : undefined
+      : undefined
+    : undefined
+);
+
+// Method below uses a Boolean AND to connect statements and handle partial evaluation to undefined
+console.log(
+  person2 &&
+    person2.address &&
+    person2.address.streetAddr &&
+    person2.address.streetAddr.aptNum
+);
+
+// Optional chaining can handle possible undefined vals
+console.log(person2?.address?.streetAddr?.aptNum);
+```
+
+### Variant Usage
+
+#### `?.()` -- Optional invocation
+
+This is used to call a function that may not exist.
+
+We can use the ?.() call to optionally invoke something that is found to be a function.
+
+```js
+const person2 = {
+  address: {
+    printAddr() {
+      return "some addr";
+    },
+  },
+};
+
+console.log("printAddr", person2?.address?.printAddr?.());
+// printAddr some addr
+```
+
+#### `?.[]` -- Optional property access
+
+If we'd like to use brackets to access properties instead of dots, e.g we're using a set value programmatically, then we want to use the optional bracket.
+
+```js
+const keyToFind = "accountNum";
+
+const obj7 = {};
+
+const obj8 = {
+  accountNum: "abcd1234",
+};
+
+console.log(obj7?.[keyToFind]);
+console.log(obj8?.[keyToFind]);
+```
+
+## Looping through Objects
+
+### `for...in` loop
+
+The for in loop allows you to traverse over all keys of an object.
+
+You should not rely on the visual top down listing of key value pairs as the order that `for...in` loop will work.
+
+```js
+let countryCodes = {
+  49: "Germany",
+  41: "Switzerland",
+  44: "Great Britain",
+  1: "USA",
+  "+49": "Germany",
+  "+41": "Switzerland",
+  "+44": "Great Britain",
+  "+1": "USA",
+};
+
+for (key in countryCodes) {
+  const val = countryCodes[key];
+  console.log(key, val);
+}
+
+// 1 USA
+// 41 Switzerland
+// 44 Great Britain
+// 49 Germany
+// +49 Germany
+// +41 Switzerland
+// +44 Great Britain
+// +1 USA
+```
+
+### Using Object methods
+
+#### Object.keys
+
+Object.keys returns an array of the object's own string key property names.
+
+```js
+let countryCodes = {
+  49: "Germany",
+  41: "Switzerland",
+  44: "Great Britain",
+  1: "USA",
+};
+
+const ans = Object.keys(countryCodes);
+console.log(ans); // [ '1', '41', '44', '49' ]
+```
+
+#### Object.values
+
+Object.values returns an array of the object's own values.
+
+```js
+let countryCodes = {
+  49: "Germany",
+  41: "Switzerland",
+  44: "Great Britain",
+  1: "USA",
+};
+
+const ans = Object.values(countryCodes);
+console.log(ans); // [ 'USA', 'Switzerland', 'Great Britain', 'Germany' ]
+```
+
+#### Object.entries
+
+Object.entries returns an array of arrays where the first value in the nested array is a given key and the second value in the nested array is its corresponding value.
+
+```js
+let countryCodes = {
+  49: "Germany",
+  41: "Switzerland",
+  44: "Great Britain",
+  1: "USA",
+};
+
+const ans = Object.entries(countryCodes);
+console.log(ans);
+// [
+//   [ '1', 'USA' ],
+//   [ '41', 'Switzerland' ],
+//   [ '44', 'Great Britain' ],
+//   [ '49', 'Germany' ]
+// ]
+```
 
 ---
 

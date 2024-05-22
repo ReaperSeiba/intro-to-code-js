@@ -229,4 +229,128 @@ const whoa = {
   },
 };
 
-whoa.sayHi();
+// whoa.sayHi();
+
+const array1 = [1, 2, 3];
+const array2 = [4, 5, 6, ...array1];
+const arr3 = [...array1];
+
+// array2.push(array1);
+// const arr3 = array2.concat(array1);
+// array2 = [...array2, ...array1];
+// console.log(arr3);
+
+const base = {
+  temperature: "hot",
+  weather: "sunny",
+};
+
+const withCity = {
+  city: "Cattaraugus",
+  ...base,
+};
+
+// console.log(withCity);
+
+const person1 = {
+  name: "Dammit",
+  address: {
+    city: "Toronto",
+    country: "CA",
+  },
+};
+
+let address = `${person1?.address?.streetAddr}` || "Incomplete Address";
+
+const person2 = {
+  address: {
+    printAddr() {
+      return "some addr";
+    },
+  },
+};
+
+// console.log(person2.address.streetAddr);
+
+// console.log(
+//   person2
+//     ? person2.address
+//       ? person2.address.streetAddr
+//         ? person2.address.streetAddr.aptNum
+//         : undefined
+//       : undefined
+//     : undefined
+// );
+
+// console.log(
+//   person2 &&
+//     person2.address &&
+//     person2.address.streetAddr &&
+//     person2.address.streetAddr.aptNum
+// );
+
+// console.log(person2?.address?.streetAddr?.aptNum);
+
+// console.log("printAddr", person2?.address?.printAddr?.());
+
+const keyToFind = "accountNum";
+
+const obj7 = {};
+
+const obj8 = {
+  accountNum: "abcd1234",
+};
+
+// console.log(obj7?.[keyToFind]);
+// console.log(obj8?.[keyToFind]);
+
+const complexDummy = {
+  id: "2489651045",
+  type: "CreateEvent",
+  actor: {
+    id: 665991,
+    login: "petroav",
+    gravatar_id: "",
+    url: "https://api.github.com/users/petroav",
+    avatar_url: "https://avatars.githubusercontent.com/u/665991?",
+  },
+  repo: {
+    id: 28688495,
+    name: "petroav/6.828",
+    url: "https://api.github.com/repos/petroav/6.828",
+  },
+  payload: {
+    ref: "master",
+    ref_type: "branch",
+    master_branch: "master",
+    description:
+      "Solution to homework and assignments from MIT's 6.828 (Operating Systems Engineering). Done in my spare time.",
+    pusher_type: "user",
+  },
+  public: true,
+  created_at: "2015-01-01T15:00:00Z",
+};
+
+// for (key in complexDummy) {
+//   // console.log(key);
+// }
+
+let countryCodes = {
+  49: "Germany",
+  41: "Switzerland",
+  44: "Great Britain",
+  1: "USA",
+};
+
+for (key in countryCodes) {
+  const val = countryCodes[key];
+  // console.log(key, val);
+}
+
+const ans = Object.entries(countryCodes);
+
+for (let i = 0; i < ans.length; i++) {
+  console.log(ans[i]);
+}
+
+console.log(ans);
