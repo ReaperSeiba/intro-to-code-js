@@ -21,4 +21,4 @@
  * doesItAddUp(10, 5, 20) => false
  */
 
-// Replace this comment with your code.
+export const doesItAddUp = (numA, numB, numC) => numA + numB === numC ? true : false;

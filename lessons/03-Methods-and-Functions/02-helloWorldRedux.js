@@ -19,4 +19,4 @@
  * helloWorldRedux("Bob") => "Hello Bob!"
  */
 
-// Replace this comment with your code.
+export const helloWorldRedux = (name) => name ? `Hello ${name}!` : "Hello World!";

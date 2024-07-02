@@ -22,4 +22,4 @@
  * uppercaseThis("d1D2d3") => "D1D2D3"
  */
 
-// Replace this comment with your code.
+export const uppercaseThis = (phrase) => phrase.toUpperCase();

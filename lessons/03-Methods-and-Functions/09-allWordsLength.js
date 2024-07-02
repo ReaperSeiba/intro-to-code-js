@@ -25,4 +25,4 @@
  * allWordsLength(["robin", "hood", "men", "in", "tights"]) => 19 (5 + 4 + 3 + 2 + 5)
  */
 
-// Replace this comment with your code.
+export const allWordsLength = (wordsArr) => wordsArr.join('').length;
