@@ -4,8 +4,7 @@
  * Define the variable myFirstName.
  * Assign it the string of your name.
  */
-
-// Replace this comment with your code.
+let myFirstName = "Evie";
 
 /**
  * #2: What's your age?
@@ -14,7 +13,7 @@
  * Assign it the value of your age.
  */
 
-// Replace this comment with your code.
+let myAge = 30;
 
 /**
  * #3: In fact, it's super fun.
@@ -23,7 +22,7 @@
  * There's only one right answer here.
  */
 
-// Replace this comment with your code.
+let codingIsFun = true;
 
 /**
  * #4: Null and undefined
@@ -35,7 +34,9 @@
  * Assign the value null to isNull and the value undefined to isUndefined.
  */
 
-// Replace this comment with your code.
+let isNull = null;
+let isUndefined = undefined;
+
 
 /**
  * #5: Quickest math class ever
@@ -56,7 +57,14 @@
  * Pass numA and numB in as variables, not as their values.
  */
 
-// Replace this comment with your code.
+let numA = 15;
+let numB = 3;
+let addedTo = numA + numB;
+let subtractedBy = numA - numB;
+let multipliedBy = numA * numB;
+let dividedBy = numA / numB;
+let remainderOf = numA % numB;
+let exponentiatedTo = numA ** numB;
 
 /**
  * #6: Values are more than values
@@ -66,8 +74,9 @@
  * Define the variable funType. Assign it the expression (don't solve) that determines what type funType is.
  */
 
-// Replace this comment with your code.
-
+let nameType = typeof(myFirstName);
+let ageType = typeof(myAge);
+let funType = typeof(codingIsFun);
 /**
  * #7: Numbers and Words, all together
  *
@@ -80,7 +89,7 @@
  * SEE: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#expression_interpolation
  */
 
-// Replace this comment with your code.
+let myDetails = `My name is ${myFirstName} and I'm ${myAge} years old.`
 
 /**
  * Needed for test to work; please do not touch
