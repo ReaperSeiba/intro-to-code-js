@@ -26,3 +26,4 @@
  */
 
 export const allWordsLength = (wordsArr) => wordsArr.join('').length;
+g

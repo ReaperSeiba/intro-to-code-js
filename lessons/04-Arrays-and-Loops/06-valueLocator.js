@@ -22,3 +22,11 @@
  * valueLocator("not", ["zyz", "xyx", "abc", "bd"]) =>
  *  "not cannot be found in the array [zyz,xyx,abc,bd]."
  */
+export function valueLocator(searchVal, arr){
+    for(let i = 0; i < arr.length; i++){
+        if(searchVal === arr[i]){
+            return `${searchVal} is at index ${i} of the array [${arr}].`;
+        }
+    }
+    return `${searchVal} cannot be found in the array [${arr}].`;
+}

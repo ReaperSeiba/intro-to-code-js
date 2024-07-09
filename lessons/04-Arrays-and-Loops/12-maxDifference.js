@@ -17,3 +17,5 @@
  * maxDifference([5, 10]) // => 10 - 5 = 5
  * maxDifference([7, 5, 2, 4, 1, 3]) // => 7 - 1 = 6
  */
+export const maxDifference = (nums) => {return nums.sort((a, b) =>{ return a-b})[nums.length - 1] - nums.sort((a, b) =>{ return a-b})[0]};
+    

@@ -19,3 +19,12 @@
  * pairMultiplier([3, 8], [5, 2]) => [15, 6, 40, 16]
  * pairMultiplier([3, 5, 8], [2, 4]) => [6, 12, 10, 20, 16, 32]
  */
+export function pairMultiplier(arr1, arr2){
+    let resultArr = [];
+    for (let i = 0; i < arr1.length; i++){
+        for(let j = 0; j < arr2.length; j++){
+            resultArr.push(arr1[i] * arr2[j]);
+        }
+    }
+    return resultArr;
+}

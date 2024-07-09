@@ -31,3 +31,33 @@
  * wordCalculator([7, 11, 12], ["sub", "mul", "rem"]) => -5
  *  // 0 - 7 = 7 * 11 = -77 % 12 = -5
  */
+export function wordCalculator(nums, operations){
+    let validOperations = ["add", "sub", "mult", "div", "rem", "pow"]
+    let result = 0;
+    for(let i = 0; i < operations.length; i++){
+        if(!validOperations.includes(operations[i])){
+            console.log(`${operations[i]} IS INVALID!!!!`) //directions had wrong names for mult and pow
+            return 0;
+        }
+        result = determineResult(result, nums[i], operations[i])
+    }
+    return result;
+}
+
+function determineResult(result, num, operation){
+    switch(operation){
+        case "add":
+            return result + num;
+        case "sub":
+            return result - num;
+        case "mult":
+            return result * num;
+        case "div":
+            return result / num;
+        case "rem":
+            return result % num;
+        case "pow":
+            return result ** num;
+    }   
+}
+ 
