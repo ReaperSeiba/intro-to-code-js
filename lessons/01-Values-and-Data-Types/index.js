@@ -74,9 +74,9 @@ let exponentiatedTo = numA ** numB;
  * Define the variable funType. Assign it the expression (don't solve) that determines what type funType is.
  */
 
-let nameType = typeof(myFirstName);
-let ageType = typeof(myAge);
-let funType = typeof(codingIsFun);
+let nameType = typeof myFirstName;
+let ageType = typeof myAge;
+let funType = typeof codingIsFun;
 /**
  * #7: Numbers and Words, all together
  *
