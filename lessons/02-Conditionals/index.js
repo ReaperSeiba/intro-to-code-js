@@ -73,8 +73,8 @@ export let isItFiveChars = notFiveChars.length === 5 ? "it's 5 characters" : "no
 //  }
 //}
 
- const numberOrString = (value) => typeof(value) === "string" || typeof(value) === "number" ?  `This is a ${typeof(value)}` : "This is not a string or a number";
- 
+const numberOrString = (value) => typeof value === "string" || typeof value === "number" ?  `This is a ${typeof value}` : "This is not a string or a number";
+
 
 /**
  * #4: truthyFalsy
@@ -202,18 +202,72 @@ function testGrader(grade) {
  * @returns {28 | 30 | 31 | "Not a valid month."}
  */
 
+// function daysInTheMonth(month) {
+//   if (month < 1 || month > 12 || typeof(month) !== "number"){
+//     return "Not a valid month."
+//   }
+//   else if(month === 1 || month === 3 || month === 5 || month === 7 || month === 8 || month === 10 || month === 12){
+//     return 31;
+//   }
+//   else if (month === 4 || month === 6 || month === 9 || month === 11) {
+//     return 30;
+//   }
+//   else if (month === 2){
+//     return 28;
+//   }
+// }
+
+// Catch-all statement at the top of this switch doesn't work
+// See the answer below this version for the right way.
+
+// function daysInTheMonth(month) {
+//   switch (month) {
+//     case typeof month !== "number":
+//     case month > 12:
+//     case month < 1:
+//       return "Not a valid month."
+
+//     case 1:
+//     case 3:
+//     case 5:
+//     case 7:
+//     case 8:
+//     case 10:
+//     case 12:
+//       return 31;
+//     case 4:
+//     case 6:
+//     case 9:
+//     case 11:
+//       return 30;
+
+//     default:
+//         return 28;
+//   }
+//   }
+  
+  
+  // This is a problem where many different conditions resolve to the same result. We have many possible results so this is a great place to use a switch statement.
+
 function daysInTheMonth(month) {
-  if (month < 1 || month > 12 || typeof(month) !== "number"){
-    return "Not a valid month."
-  }
-  else if(month === 1 || month === 3 || month === 5 || month === 7 || month === 8 || month === 10 || month === 12){
-    return 31;
-  }
-  else if (month === 4 || month === 6 || month === 9 || month === 11) {
-    return 30;
-  }
-  else if (month === 2){
-    return 28;
+  switch (month) {
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+    case 8:
+    case 10:
+    case 12:
+      return 31;
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+      return 30;
+    case 2:
+      return 28;
+    default:
+      return "Not a valid month.";
   }
 }
 

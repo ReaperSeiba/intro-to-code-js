@@ -21,22 +21,37 @@
  * flipomatic([1, 2, "flip", 3, 4, 5]) => [5, 4, 3, 1, 2]
  * flipomatic([1, 2, 3, 4, 5, "flip"]) => [1, 2, 3, 4, 5]
  */
-export function flipomatic(array){
-    let resultArray = [];
-    let flip = false;
+export function flipomatic(array) {
+  let resultArray = [];
+  let flip = false;
 
-    for(let i = 0; i < array.length; i++){
-        if(array[i] === "flip"){
-            flip = !flip;
-        }
-        else{
-            if(flip){
-                resultArray.unshift(array[i]);
-            }
-            else{
-                resultArray.push(array[i]);
-            }
-        }
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === "flip") {
+      flip = !flip;
+    } else {
+      if (flip) {
+        resultArray.unshift(array[i]);
+      } else {
+        resultArray.push(array[i]);
+      }
     }
-    return resultArray;
+  }
+  return resultArray;
+}
+
+export function flipomatic(array) {
+  let output = [];
+  let flip = false;
+  for (let i = 0; i < array.length; i++) {
+    const currValue = array[i];
+
+    if (currValue === "flip") {
+      flip = !flip;
+    } else if (flip) {
+      output.unshift(currValue);
+    } else {
+      output.push(currValue);
+    }
+  }
+  return output;
 }

@@ -26,4 +26,7 @@
  */
 
 export const allWordsLength = (wordsArr) => wordsArr.join('').length;
-g
+
+/**
+ * HOMEWORK: Rewrite this function so that it still works WITHOUT using .join()
+ */

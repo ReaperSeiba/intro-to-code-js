@@ -25,3 +25,6 @@
  */
 
 export const smallTogetherNow = (str1, str2) => str1.toLowerCase() + str2.toLowerCase();
+
+// const smallTogetherNow = (str1, str2) =>
+//   str1.toLowerCase().concat(str2.toLowerCase());

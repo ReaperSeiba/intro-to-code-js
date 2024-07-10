@@ -31,3 +31,16 @@ export function repeater(str, times){
     }
     return multiString;
 }
+
+
+// export function repeater(string, times) {
+//   if (times < 1) {
+//     return "";
+//   }
+
+//   let repeatedStr = "";
+//   for (let i = 1; i <= times; i++) {
+//     repeatedStr += string;
+//   }
+//   return repeatedStr;
+// }

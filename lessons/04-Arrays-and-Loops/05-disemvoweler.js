@@ -22,4 +22,8 @@
  * disemvoweler("BeaR") => "BR"
  * disemvoweler("diCTIONAry") => "dCTNry"
  */
-export const disemvoweler = (string) => string.split('').filter((char) => !['a', 'e', 'i', 'o', 'u'].includes(char.toLowerCase())).join('');
+export const disemvoweler = (string) =>
+  string
+    .split("")
+    .filter((char) => !["a", "e", "i", "o", "u"].includes(char.toLowerCase()))
+    .join("");

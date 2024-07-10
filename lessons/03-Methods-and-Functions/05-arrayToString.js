@@ -21,3 +21,7 @@
  */
 
 export const arrayToString = (array, connector) => array.join(connector);
+
+/**
+ * HOMEWORK: Rewrite this function so that it still works WITHOUT using .join()
+ */
