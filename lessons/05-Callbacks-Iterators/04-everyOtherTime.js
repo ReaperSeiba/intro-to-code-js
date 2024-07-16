@@ -20,6 +20,25 @@
  * // => [1, 2000, 3, 4000, 5, 6000]
  */
 
-function everyOtherTime() {}
+function everyOtherTime(inputArr, callback) {
+  // let result = [];
+  // for (let i = 0; i < inputArr.length; i++) {
+  //   if (i % 2 === 1) {
+  //     result.push(callback(inputArr[i]));
+  //   } else {
+  //     result.push(inputArr[i]);
+  //   }
+  // }
+  // return result;
+  let result = [];
+  inputArr.forEach((element, i) => {
+    if (i % 2 === 1) {
+      result[i] = callback(element);
+    } else {
+      result[i] = element;
+    }
+  });
+  return result;
+}
 
 export default everyOtherTime;

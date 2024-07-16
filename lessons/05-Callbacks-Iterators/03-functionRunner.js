@@ -28,6 +28,18 @@
  * // Run 2: "AbcAbcAbcAbc"
  * // Run 3 (Final) => "AbcAbcAbcAbcAbcAbcAbcAbc"
  */
-function functionRunner() {}
+function functionRunner(inputVal, callback, runCount) {
+  if (runCount === 0) {
+    return inputVal;
+  } else if (inputVal === 1) {
+    return callback(inputVal);
+  } else {
+    let result = callback(inputVal);
+    for (let i = 1; i < runCount; i++) {
+      result = callback(result);
+    }
+    return result;
+  }
+}
 
 export default functionRunner;

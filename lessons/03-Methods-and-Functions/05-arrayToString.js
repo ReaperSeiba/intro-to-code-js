@@ -20,8 +20,20 @@
  * arrayToString(["cat", "dog", "moo"], "+-%") => "cat+-%dog+-%moo"
  */
 
-export const arrayToString = (array, connector) => array.join(connector);
+//export const arrayToString = (array, connector) => array.join(connector);
 
 /**
  * HOMEWORK: Rewrite this function so that it still works WITHOUT using .join()
  */
+
+export function arrayToString(array, connector) {
+  let result = "";
+  for (let i = 0; i < array.length; i++) {
+    if (i === array.length - 1) {
+      result += array[i];
+    } else {
+      result += array[i] + connector;
+    }
+  }
+  return result;
+}

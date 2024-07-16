@@ -21,6 +21,23 @@ import { uppers } from "./data/startingCapsOnly.data";
  * startingCapsOnly(["Microsoft", "party", "lION"]) // => ["Microsoft"]
  */
 
-function startingCapsOnly() {}
+// function startingCapsOnly(words) {
+//   let result = [];
+//   words.forEach((element) => {
+//     if (uppers.includes(element.at(0))) {
+//       result.push(element);
+//     }
+//   });
+//   return result;
+// }
+//1st try
 
+// function startingCapsOnly(words) {
+//   let result = words.filter((word) => uppers.includes(word.at(0)));
+//   return result;
+// }
+//2nd try
+
+const startingCapsOnly = (words) =>
+  words.filter((word) => uppers.includes(word.charAt(0)));
 export { startingCapsOnly };

@@ -19,6 +19,10 @@
  * callbackConveyor(0, [minusTwenty, addTen]) // => -10
  * callbackConveyor(0, [minusTwenty, multiplyThree, addTen]) // => -50
  */
-function callbackConveyor() {}
+function callbackConveyor(number, callbacksArr) {
+  let result = number;
+  callbacksArr.forEach((element) => (result = element(result)));
+  return result;
+}
 
 export default callbackConveyor;

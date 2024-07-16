@@ -25,7 +25,12 @@
  * allWordsLength(["robin", "hood", "men", "in", "tights"]) => 19 (5 + 4 + 3 + 2 + 5)
  */
 
-export const allWordsLength = (wordsArr) => wordsArr.join('').length;
+//export const allWordsLength = (wordsArr) => wordsArr.join('').length;
+export const allWordsLength = (wordsArr) => {
+  let result = 0;
+  wordsArr.forEach((element) => (result += element.length));
+  return result;
+};
 
 /**
  * HOMEWORK: Rewrite this function so that it still works WITHOUT using .join()
