@@ -26,12 +26,23 @@
  */
 
 //export const allWordsLength = (wordsArr) => wordsArr.join('').length;
-export const allWordsLength = (wordsArr) => {
-  let result = 0;
-  wordsArr.forEach((element) => (result += element.length));
-  return result;
-};
 
 /**
  * HOMEWORK: Rewrite this function so that it still works WITHOUT using .join()
  */
+
+// export const allWordsLength = (wordsArr) => {
+//   let result = 0;
+//   wordsArr.forEach((element) => (result += element.length));
+//   return result;
+// };
+
+// export const allWordsLength = (wordsArr) =>
+//   wordsArr.reduce((accumulator, currentValue) => accumulator + currentValue)
+//     .length;
+
+export const allWordsLength = (wordsArr) =>
+  wordsArr.reduce(
+    (accumulator, currentValue) => accumulator + currentValue.length,
+    0
+  );

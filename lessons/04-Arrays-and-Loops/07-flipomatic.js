@@ -39,19 +39,22 @@ export function flipomatic(array) {
   return resultArray;
 }
 
-export function flipomatic(array) {
-  let output = [];
-  let flip = false;
-  for (let i = 0; i < array.length; i++) {
-    const currValue = array[i];
+/**
+ * Christian's version
+ */
+// export function flipomatic(array) {
+//   let output = [];
+//   let flip = false;
+//   for (let i = 0; i < array.length; i++) {
+//     const currValue = array[i];
 
-    if (currValue === "flip") {
-      flip = !flip;
-    } else if (flip) {
-      output.unshift(currValue);
-    } else {
-      output.push(currValue);
-    }
-  }
-  return output;
-}
+//     if (currValue === "flip") {
+//       flip = !flip;
+//     } else if (flip) {
+//       output.unshift(currValue);
+//     } else {
+//       output.push(currValue);
+//     }
+//   }
+//   return output;
+// }

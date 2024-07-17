@@ -11,25 +11,36 @@
  * @category 04 - Arrays and Loops
  * @function fizzBuzz
  * @param {Number} stopNum - the number to stop the loop at (inclusive)
- * @returns {String[]} an array of strings
+ * @returns {String | Number[]} an array of strings and numbers
  * @example
- * fizzBuzz(12) => ["1", "2", "Fizz", "Buzz", "5", "Fizz", "7", "Buzz", "Fizz", "10", "11", "FizzBuzz"]
+ * fizzBuzz(12) => [1, 2, "Fizz", "Buzz", 5, "Fizz", 7, "Buzz", "Fizz", 10, 11, "FizzBuzz"]
  */
-export function fizzBuzz(stopNum){
-    let results = [];
-    for(let i = 1; i <= stopNum; i++){
-        if(i % 4 === 0 && i % 3 === 0){
-            results.push("FizzBuzz");
-        }
-        else if(i % 4 === 0){
-            results.push("Buzz")
-        }
-        else if(i % 3 === 0){
-            results.push("Fizz");
-        }
-        else{
-            results.push(i);
-        }
-    }
-    return results;
+// export function fizzBuzz(stopNum){
+//     let results = [];
+//     for(let i = 1; i <= stopNum; i++){
+//         if(i % 4 === 0 && i % 3 === 0){
+//             results.push("FizzBuzz");
+//         }
+//         else if(i % 4 === 0){
+//             results.push("Buzz")
+//         }
+//         else if(i % 3 === 0){
+//             results.push("Fizz");
+//         }
+//         else{
+//             results.push(i);
+//         }
+//     }
+//     return results;
+// }
+
+export function fizzBuzz(stopNum) {
+  let results = [];
+  for (let num = 1; num <= stopNum; num++) {
+    let entry = "";
+    if (num % 3 === 0) entry += "Fizz";
+    if (num % 4 === 0) entry += "Buzz";
+    results.push(entry || num);
+  }
+  return results;
 }
