@@ -15,4 +15,11 @@
  * nullDeleter({ one: null, two: null, three: "goodbye" }) // => { three: "goodbye" }
  * nullDeleter({ one: null, two: null, three: null }) // => {}
  */
-export function nullDeleter() {}
+export function nullDeleter(object) {
+  for (const [key, value] of Object.entries(object)) {
+    if (value === null) {
+      delete object[key];
+    }
+  }
+  return object;
+}

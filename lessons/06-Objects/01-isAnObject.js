@@ -20,4 +20,9 @@
  * isAnObject( { fruit: "banana" } ) // true
  */
 
-export function isAnObject() {}
+// export function isAnObject(input) {}
+
+export const isAnObject = (input) =>
+  typeof input === "object" && input !== null && !Array.isArray(input)
+    ? true
+    : false;

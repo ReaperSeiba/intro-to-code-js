@@ -17,4 +17,17 @@
  * objectCount({ one: true, two: {}, three: "word", four: 4 }) // => 1
  */
 
-export function objectCount() {}
+export function objectCount(obj) {
+  let arr = Object.values(obj).flat();
+  let count = 0;
+  arr.forEach((element) => {
+    if (
+      typeof element === "object" &&
+      element !== null &&
+      !Array.isArray(element)
+    ) {
+      count++;
+    }
+  });
+  return count;
+}

@@ -20,4 +20,15 @@
  * // => [ { one: 1 }, { two: true }, { three: "no" } ]
  */
 
-export function onePairObjects() {}
+// export function onePairObjects(inputObj) {
+//   let result = [];
+//   let arr = Object.entries(inputObj);
+//   for (let i = 0; i < arr.length; i++) {
+//     let newObj = { [arr[i][0]]: arr[i][1] };
+//     result.push(newObj);
+//   }
+//   return result;
+// }
+
+export const onePairObjects = (inputObj) =>
+  Object.entries(inputObj).map(([key, value]) => ({ [key]: value }));

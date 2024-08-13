@@ -1,8 +1,8 @@
 import { expect } from "chai";
 import { dataObj } from "../data/02-valueReader.data";
-import valueReader from "../02-valueReader";
+import { valueReader } from "../02-valueReader";
 
-xdescribe("#2: valueReader", () => {
+describe("#2: valueReader", () => {
   describe("returns the correct value", () => {
     it("when the key-value pair exists in the data object", () => {
       expect(valueReader("alfa", dataObj)).to.equal("hello world");
@@ -18,3 +18,4 @@ xdescribe("#2: valueReader", () => {
     });
   });
 });
+// added {} around ValueReader

@@ -16,4 +16,12 @@
  * console.log(result); // { a: 1, b: 3, c: 4 } <- Notice that the "b" value from obj2 is used since it came last in the order.
  */
 
-export function objectCombiner() {}
+// export function objectCombiner(...args) {
+//   if (!args) {
+//     return {};
+//   }
+//   return Object.assign({}, ...args);
+// } first attempt, realized after that !args may not do anything
+export function objectCombiner(...args) {
+  return Object.assign({}, ...args);
+}

@@ -23,4 +23,6 @@
  * priceTransformer(pricesTwo) // => { yogurt: 1.5, banana: 1.99 }
  */
 
-export function priceTransformer() {}
+// export function priceTransformer(objArr) {}
+
+export const priceTransformer = (objArr) => Object.create(objArr);

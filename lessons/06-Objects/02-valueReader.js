@@ -25,4 +25,7 @@
  * valueReader("sierra", dataObj) // => undefined
  */
 
-export function valueReader() {}
+export function valueReader(keyString, dataObj) {
+  return dataObj[keyString];
+}
+//**** had to change test to not error ****
