@@ -23,6 +23,12 @@
 // export function isAnObject(input) {}
 
 export const isAnObject = (input) =>
-  typeof input === "object" && input !== null && !Array.isArray(input)
-    ? true
-    : false;
+  typeof input === "object" && input !== null && !Array.isArray(input);
+// boolean && boolean && boolean
+// boolean
+
+// First attempt
+// export const isAnObject = (input) =>
+//   typeof input === "object" && input !== null && !Array.isArray(input)
+//     ? true
+// : false;

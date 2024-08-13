@@ -22,6 +22,28 @@
 //   }
 //   return Object.assign({}, ...args);
 // } first attempt, realized after that !args may not do anything
+
 export function objectCombiner(...args) {
   return Object.assign({}, ...args);
 }
+
+/**
+ * The arguments object in JavaScript is not an array but an array-like object. This means it has some properties and behaviors of an array (like indexed access to its elements and a length property), but it does not have array methods like `.reduce()` directly available.
+ *
+ * To use array methods on the arguments object, you need to borrow them from the Array.prototype and call them with the arguments object as the context. This is done using `Array.prototype.reduce.call(arguments, callback)`.
+ */
+// export const objectCombiner = () =>
+//   Array.prototype.reduce.call(
+//     arguments,
+//     (acc, curr) => ({
+//       ...acc,
+//       ...curr,
+//     }),
+//     {}
+//   );
+
+/**
+ * However, a clearer and more modern way to handle this is to convert the arguments object to a real array using `Array.from()` or the spread operator `[...arguments]`, and then use array methods directly. Here's an updated version of the objectCombiner function using the spread operator:
+ */
+// export const objectCombiner = (...args) =>
+//   args.reduce((prev, currObj) => ({ ...prev, ...currObj }), {});

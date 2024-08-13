@@ -1,3 +1,5 @@
+import { isAnObject } from "./01-isAnObject";
+
 /**
  * #3: objectCount
  *
@@ -18,16 +20,51 @@
  */
 
 export function objectCount(obj) {
-  let arr = Object.values(obj).flat();
   let count = 0;
-  arr.forEach((element) => {
-    if (
-      typeof element === "object" &&
-      element !== null &&
-      !Array.isArray(element)
-    ) {
+
+  let flatObjArr = Object.values(obj).flat();
+
+  flatObjArr.forEach((element) => {
+    if (isAnObject(element)) {
       count++;
     }
   });
   return count;
 }
+
+// WORKS
+// export function objectCount(obj) {
+//   let count = 0;
+
+//   let flatObjArr = Object.values(obj).flat();
+
+//   flatObjArr.forEach((element) => {
+//     if (
+//       typeof element === "object" &&
+//       element !== null &&
+//       !Array.isArray(element)
+//     ) {
+//       count++;
+//     }
+//   });
+//   return count;
+// }
+
+// Answer w/o using .flat()
+// export function objectCount(obj) {
+//   let count = 0;
+
+//   for (const value of Object.values(obj)) {
+//     if (Array.isArray(value)) {
+//       // maybe is an array containing objects
+//       for (const element of value) {
+//         if (isAnObject(element)) {
+//           count++;
+//         }
+//       }
+//     } else if (isAnObject(value)) {
+//       count++;
+//     }
+//   }
+//   return count;
+// }

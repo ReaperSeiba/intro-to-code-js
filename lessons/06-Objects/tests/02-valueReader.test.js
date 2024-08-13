@@ -18,4 +18,3 @@ describe("#2: valueReader", () => {
     });
   });
 });
-// added {} around ValueReader

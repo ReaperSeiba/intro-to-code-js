@@ -16,13 +16,20 @@
  * @returns {Object} the transformed object
  *
  * @example
- * const pricesOne = [ { food: "chips", price: 4.5, } ]
+ * const pricesOne = [
+ *  { food: "chips", price: 4.5, }
+ * ]
  * priceTransformer(pricesOne) // => { chips: 4.5 }
  *
- * const pricesTwo = [ { food: "yogurt", price: 1.5, }, { food: "banana", price: 1.99, } ]
+ * const pricesTwo = [
+ *  { food: "yogurt", price: 1.5, },
+ *  { food: "banana", price: 1.99, }
+ * ]
  * priceTransformer(pricesTwo) // => { yogurt: 1.5, banana: 1.99 }
  */
 
-// export function priceTransformer(objArr) {}
-
-export const priceTransformer = (objArr) => Object.create(objArr);
+// TODO: this problem
+export function priceTransformer(objArr) {
+  resultsObj = {};
+  objArr.forEach((element) => resultsObj[element[0]]);
+}
