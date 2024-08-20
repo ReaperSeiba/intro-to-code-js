@@ -32,7 +32,20 @@
 
 export const onePairObjects = (inputObj) =>
   Object.entries(inputObj).map(([key, value]) => ({ [key]: value }));
-//explanation
+
+//explanation|| Object.entries is converting inputObj into an array of arrays, those arrays contain a key value pair
+// .map is applied to the new entries array of arrays.
+//.map creates a new array which is calling a function on every element in the original array
+//in this case our elements are [key, value] which represents the first and second element within each nested array within .entries array
+// => return function that returns an object {[key]: value}
+//using our value key as the key for the new obj [key](bracket notation) : value as its pair value
+//essentially for each element within the array we are returning an array filled with elements that
+//were mapped into new objects using elements [0,1] from the sub arrays
+
+//Originally derived from this:
+//const map = {"a": 1, "b": 2, "c": 3};
+// const mapped = Object.entries(map).map(([k,v]) => `${k}_${v}`);
+// console.log(mapped);
 
 // export function onePairObjects(inputObj) {
 //   const arrayOfObj = [];

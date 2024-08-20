@@ -29,7 +29,19 @@
  */
 
 // TODO: this problem
-export function priceTransformer(objArr) {
-  resultsObj = {};
-  objArr.forEach((element) => resultsObj[element[0]]);
-}
+// export function priceTransformer(objArr) {
+//   let keyValuePairArray = [];
+//   objArr.forEach((element) => keyValuePairArray.push(Object.values(element)));
+//   let resultsObj = Object.fromEntries(keyValuePairArray);
+//   console.log(keyValuePairArray);
+//   console.log(resultsObj);
+//   return resultsObj;
+// }
+
+export const priceTransformer = (objArr) =>
+  Object.fromEntries(objArr.map((element) => Object.values(element)));
+//using non oneliner answer
+//pricetransformer expects object return
+//return object = object.fromentries which expects an array of arrays containing key-value pairs
+//objArr.map returns an array that iterates using a return function on each element of the objArr input of the function
+//return function is Object.values which turns an objects values into an array
