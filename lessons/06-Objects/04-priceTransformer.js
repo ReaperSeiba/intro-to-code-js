@@ -28,16 +28,45 @@
  * priceTransformer(pricesTwo) // => { yogurt: 1.5, banana: 1.99 }
  */
 
+// Without destructuring priceObj
+// export function priceTransformer(objArr) {
+//   const transformedObj = {};
+
+//   for (const priceObj of objArr) {
+//     const newKey = priceObj.food;
+//     const newPrice = priceObj.price;
+
+//     transformedObj[newKey] = newPrice;
+//   }
+//   return transformedObj;
+// }
+
+// Destructuring priceObj
+// export function priceTransformer(objArr) {
+//   const transformedObj = {};
+
+//   for (const { food, price } of objArr) {
+//     transformedObj[food] = price;
+//   }
+
+//   return transformedObj;
+// }
+
 // TODO: this problem
 // export function priceTransformer(objArr) {
 //   let keyValuePairArray = [];
 //   objArr.forEach((element) => keyValuePairArray.push(Object.values(element)));
-//   let resultsObj = Object.fromEntries(keyValuePairArray);
-//   console.log(keyValuePairArray);
-//   console.log(resultsObj);
-//   return resultsObj;
+//   return Object.fromEntries(keyValuePairArray);
 // }
 
+// "one-liner"
+// export const priceTransformer = (objArr) =>
+//   objArr.reduce((newObj, { food, price }) => {
+//     newObj[food] = price;
+//     return newObj;
+//   }, {});
+
+// TRUE one-liner
 export const priceTransformer = (objArr) =>
   Object.fromEntries(objArr.map((element) => Object.values(element)));
 //using non oneliner answer

@@ -38,7 +38,7 @@ export const onePairObjects = (inputObj) =>
 //.map creates a new array which is calling a function on every element in the original array
 //in this case our elements are [key, value] which represents the first and second element within each nested array within .entries array
 // => return function that returns an object {[key]: value}
-//using our value key as the key for the new obj [key](bracket notation) : value as its pair value
+//using our value key as the key for the new obj [key](bracket notation) dynamic naming key variable : value as its pair value
 //essentially for each element within the array we are returning an array filled with elements that
 //were mapped into new objects using elements [0,1] from the sub arrays
 
