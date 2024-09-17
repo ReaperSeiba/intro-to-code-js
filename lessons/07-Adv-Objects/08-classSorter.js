@@ -36,5 +36,35 @@
  *   },
  * };
  */
-
-export function classSorter() {}
+//restructuring an object from roster.students/teachers[{name: value, grade: value}] to roster.grade:{students: [StudentNames] teachers: [TeacherNames]}
+//create new blank object
+//use a for loop for each array(student and teacher)
+//if grade key does not exist in sortedRoster create the object with students/teacher blank arrays and then add the current name to array as its value
+export function classSorter(roster) {
+  let sortedRoster = {};
+  if (roster.students !== undefined) {
+    for (let i = 0; i < roster.students.length; i++) {
+      let currentStudent = roster.students[i];
+      if (!sortedRoster[currentStudent.grade]) {
+        sortedRoster[currentStudent.grade] = {
+          students: [],
+          teachers: [],
+        };
+      }
+      sortedRoster[currentStudent.grade].students.push(currentStudent.name);
+    }
+  }
+  if (roster.teachers !== undefined) {
+    for (let i = 0; i < roster.teachers.length; i++) {
+      let currentTeacher = roster.teachers[i];
+      if (!sortedRoster[currentTeacher.grade]) {
+        sortedRoster[currentTeacher.grade] = {
+          students: [],
+          teachers: [],
+        };
+      }
+      sortedRoster[currentTeacher.grade].teachers.push(currentTeacher.name);
+    }
+  }
+  return sortedRoster;
+}

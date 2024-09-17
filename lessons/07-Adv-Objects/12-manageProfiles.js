@@ -32,4 +32,21 @@
  * //   'user3': { name: 'Charlie', age: 28 }
  * // }
  */
-export function manageProfiles() {}
+
+//create return object based on profiles
+//loop through updates and create empty user objects as needed for missing users
+//if user is not missing loop through user entries and update profiles secondary keys
+export function manageProfiles(profiles, updates) {
+  let updatedProfiles = Object.assign({}, profiles);
+  for (const [key, value] of Object.entries(updates)) {
+    if (!updatedProfiles.hasOwnProperty(key)) {
+      updatedProfiles[key] = {};
+      updatedProfiles[key] = value;
+    } else {
+      for (const [key2, value2] of Object.entries(updates[key])) {
+        updatedProfiles[key][key2] = value2;
+      }
+    }
+  }
+  return updatedProfiles;
+}

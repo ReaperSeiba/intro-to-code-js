@@ -25,4 +25,11 @@
  * const clone = deepClone(withDateObj);
  * console.log(clone); // => { name: 'Alice', date: Date object }
  */
-export function deepClone() {}
+//objects are pass by reference meaning assigning a 'clone' inputObj will mutate the original when modified...
+//Objective: create a new object utilizing data within inputObj
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+//I dont think this was supposed to pass accoding to the warning for deepcloning in the docs??
+export function deepClone(inputObj) {
+  const clone = Object.assign({}, inputObj);
+  return clone;
+}

@@ -27,4 +27,28 @@
  * findObjectDifferences(objX, objY);
  * // Returns: { color: ['red', 'blue'], material: [undefined, 'cotton'] }
  */
-export function findObjectDifferences() {}
+//will need a blank return object to store differences
+//convert both objects into arrays to use in comparisons
+//use for of loop, if keys and values match remove them from the objects
+//if keys match and values differ push combined values as an array with 2 values to use object.FromEntires
+//if keys dont match push value + undefined as an array with 2 values to use object.fromEntries
+//repeat for obj2 loop but only if key is not found in obj1 as overlaps should have been checked.
+export function findObjectDifferences(obj1, obj2) {
+  let returnData = [];
+  for (const [key, value] of Object.entries(obj1)) {
+    if (obj2.hasOwnProperty(key)) {
+      if (value !== obj2[key]) {
+        returnData.push([key, [value, obj2[key]]]);
+      }
+    } else {
+      returnData.push([key, [value, undefined]]);
+    }
+  }
+  for (const [key, value] of Object.entries(obj2)) {
+    if (!obj1.hasOwnProperty(key)) {
+      returnData.push([key, [undefined, value]]);
+    }
+  }
+  console.log(Object.fromEntries(returnData));
+  return Object.fromEntries(returnData);
+}

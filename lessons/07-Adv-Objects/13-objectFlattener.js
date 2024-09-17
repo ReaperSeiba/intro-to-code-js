@@ -27,4 +27,36 @@
  * const nestedObjVal = { one: 1, two: { three: false, four: 4 }, five: { six: 'six' } };
  * objectFlattener(nestedObjVal); // => { one: 1, three: false, four: 4, six: 'six' }
  */
-export function objectFlattener() {}
+//result Array to store flattened results
+//use isAnObject function from previous test
+//loop through inputObj entries
+// test to see if they are an object, push results that are not objects to array
+//if object use helper function that runs until object detection is false and returns a flattened array
+
+export function objectFlattener(inputObj) {
+  let resultArr = [];
+  for (const [key, value] of Object.entries(inputObj)) {
+    if (isAnObject(value)) {
+      resultArr.concat(flatten(value));
+    } else {
+      resultArr.push([key, value]);
+    }
+  }
+  return Object.fromEntries(resultArr);
+}
+
+function flatten(objectToFlatten) {
+  let array = [];
+  for (const [key, value] of Object.entries(objectToFlatten)) {
+    if (isAnObject(value)) {
+      array.concat(flatten(value));
+    } else {
+      array.push([key, value]);
+    }
+  }
+  console.log(array);
+  return array;
+}
+
+export const isAnObject = (input) =>
+  typeof input === "object" && input !== null && !Array.isArray(input);

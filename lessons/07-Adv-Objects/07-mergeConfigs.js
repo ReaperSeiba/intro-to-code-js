@@ -24,4 +24,19 @@
  * mergeConfigs(configDefaults, customConfig);
  * // Returns: { apiUrl: 'http://api.example.com', timeout: 2000, retries: 3 }
  */
-export function mergeConfigs() {}
+
+//userConfig must override defaultConfig, result stored in a new object
+//convert both configs to arrays, merge the user config array into the default array, convert array to object
+//objects can only contain 1 key so keys later in the array will overwrite earlier keys
+
+// export function mergeConfigs(defaultConfig, userConfig) {
+//   let mergedConfigArray = Object.entries(defaultConfig).concat(
+//     Object.entries(userConfig)
+//   );
+//   return Object.fromEntries(mergedConfigArray);
+// }
+
+export const mergeConfigs = (defaultConfig, userConfig) =>
+  Object.fromEntries(
+    Object.entries(defaultConfig).concat(Object.entries(userConfig))
+  );

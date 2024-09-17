@@ -27,4 +27,25 @@
  * //   'price' => [10, 15]
  * // }
  */
-export function propValMap() {}
+
+//Idea: Iterate through array of objects
+//iterate through object to pull each KV pair
+//assign keys and values (values as an array to account for multiple) to an empty Map
+//if map has the key push new value to the array of values assigned to the key
+export function propValMap(items) {
+  console.log(items);
+  const resultsMap = new Map();
+  for (let i = 0; i < items.length; i++) {
+    for (const [key, value] of Object.entries(items[i])) {
+      if (resultsMap.has(key)) {
+        resultsMap.get(key).push(value);
+        console.log("Value pushed to duplicate key");
+      } else {
+        resultsMap.set(key, [value]);
+        console.log("Key not found, new key created in Map");
+      }
+    }
+  }
+  console.log(resultsMap);
+  return resultsMap;
+}

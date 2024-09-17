@@ -7,7 +7,7 @@ import {
   clonedObjWithDate,
 } from "../data/10-deepClone.data";
 
-xdescribe("#10: deepClone", () => {
+describe("#10: deepClone", () => {
   it("should return an object", () => {
     const result = deepClone(objNoDate);
     expect(result).to.be.an("object");

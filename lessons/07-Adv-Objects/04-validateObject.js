@@ -25,4 +25,24 @@
  * const invalidObj = { name: 'Alice', age: '30' };
  * validateObject(invalidObj, schema); // => false
  */
-export function validateObject() {}
+
+//input object must have matching key names and value type to the schema object
+//return a boolean value depending on if input matches
+//convert input object into key/value array, iterate through array and compare each key/value to the schema
+//if the schema is empty or full loop completes return true
+
+//first attempt tried for of loops after converting the objects into entry arrays, was unable to iterate correctly
+//second attempt was to try using Maps of the objects for .has and.get
+export function validateObject(inputObj, schema) {
+  const inputObjMap = new Map(Object.entries(inputObj));
+  const schemaMap = new Map(Object.entries(schema));
+  for (const [key, value] of schemaMap) {
+    if (!inputObjMap.has(key)) {
+      return false;
+    } else if (value !== typeof inputObjMap.get(key)) {
+      console.log(typeof value, typeof inputObjMap.get(key));
+      return false;
+    }
+  }
+  return true;
+}

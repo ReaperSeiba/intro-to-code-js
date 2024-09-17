@@ -14,4 +14,6 @@
  * const objAsString = objectToString(data);
  * // objAsString: '{"name":"Alice","age":25,"hobbies":["reading","gaming"]}'
  */
-export function objectToString() {}
+export function objectToString(obj) {
+  return JSON.stringify(obj); //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
+}

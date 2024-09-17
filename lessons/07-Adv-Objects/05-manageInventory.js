@@ -22,4 +22,25 @@
  * manageInventory(items);
  * // Returns: { apple: 4, banana: 2 }
  */
-export function manageInventory() {}
+
+// given an array of objects, create an object with each key(item names) and their values(quantity)
+//quantity should be summed if keys match
+//create empty object for inventory
+//iterate through items array, if key for name does not exist in inventory add key, if it exists add value from quantity
+export function manageInventory(items) {
+  let inventory = {};
+  {
+    for (let i = 0; i < items.length; i++) {
+      let item = items[i].name;
+      let quantity = items[i].quantity;
+      if (inventory.hasOwnProperty(item)) {
+        console.log("Inventory contained this key " + item);
+        inventory[item] += quantity;
+      } else {
+        console.log("Inventory did not contain this key " + item);
+        inventory[item] = quantity;
+      }
+    }
+  }
+  return inventory;
+}
