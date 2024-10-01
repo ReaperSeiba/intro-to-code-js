@@ -36,17 +36,34 @@
 //create return object based on profiles
 //loop through updates and create empty user objects as needed for missing users
 //if user is not missing loop through user entries and update profiles secondary keys
+// export function manageProfiles(profiles, updates) {
+//   let updatedProfiles = Object.assign({}, profiles);
+
+//   for (const [key, value] of Object.entries(updates)) {
+//     if (!updatedProfiles.hasOwnProperty(key)) {
+//       updatedProfiles[key] = {};
+//       updatedProfiles[key] = value;
+//     } else {
+//       for (const [key2, value2] of Object.entries(updates[key])) {
+//         updatedProfiles[key][key2] = value2;
+//       }
+//     }
+//   }
+//   return updatedProfiles;
+// }
+
 export function manageProfiles(profiles, updates) {
-  let updatedProfiles = Object.assign({}, profiles);
   for (const [key, value] of Object.entries(updates)) {
-    if (!updatedProfiles.hasOwnProperty(key)) {
-      updatedProfiles[key] = {};
-      updatedProfiles[key] = value;
-    } else {
-      for (const [key2, value2] of Object.entries(updates[key])) {
-        updatedProfiles[key][key2] = value2;
-      }
+    if (!profiles.hasOwnProperty(key)) {
+      profiles[key] = {};
     }
+    //creates an empty object for missing entries in profiles
+
+    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+    //object assign merges a source into a target, we can use assign to merge the values of the keys back into profiles
+    Object.assign(profiles[key], value);
   }
-  return updatedProfiles;
+
+  return profiles;
 }
+//REWRITE

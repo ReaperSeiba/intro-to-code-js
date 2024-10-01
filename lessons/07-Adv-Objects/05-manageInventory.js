@@ -29,18 +29,29 @@
 //iterate through items array, if key for name does not exist in inventory add key, if it exists add value from quantity
 export function manageInventory(items) {
   let inventory = {};
-  {
-    for (let i = 0; i < items.length; i++) {
-      let item = items[i].name;
-      let quantity = items[i].quantity;
-      if (inventory.hasOwnProperty(item)) {
-        console.log("Inventory contained this key " + item);
-        inventory[item] += quantity;
-      } else {
-        console.log("Inventory did not contain this key " + item);
-        inventory[item] = quantity;
-      }
+
+  for (let i = 0; i < items.length; i++) {
+    let item = items[i].name;
+    let quantity = items[i].quantity;
+    if (inventory.hasOwnProperty(item)) {
+      console.log("Inventory contained this key " + item);
+      inventory[item] += quantity;
+    } else {
+      console.log("Inventory did not contain this key " + item);
+      inventory[item] = quantity;
     }
   }
+
   return inventory;
 }
+
+// Christian's one-liner
+// export const manageInventory = (items) =>
+//   items.reduce((acc, item) => {
+//     if (acc[item.name]) {
+//       acc[item.name] += item.quantity;
+//     } else {
+//       acc[item.name] = item.quantity;
+//     }
+//     return acc;
+//   }, {});

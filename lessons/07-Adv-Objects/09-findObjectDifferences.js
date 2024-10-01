@@ -33,22 +33,45 @@
 //if keys match and values differ push combined values as an array with 2 values to use object.FromEntires
 //if keys dont match push value + undefined as an array with 2 values to use object.fromEntries
 //repeat for obj2 loop but only if key is not found in obj1 as overlaps should have been checked.
+// export function findObjectDifferences(obj1, obj2) {
+//   let returnData = [];
+
+//   for (const [key, value] of Object.entries(obj1)) {
+//     if (obj2.hasOwnProperty(key)) {
+//       if (value !== obj2[key]) {
+//         returnData.push([key, [value, obj2[key]]]);
+//       }
+//     } else {
+//       returnData.push([key, [value, undefined]]);
+//     }
+//   }
+
+//   for (const [key, value] of Object.entries(obj2)) {
+//     if (!obj1.hasOwnProperty(key)) {
+//       returnData.push([key, [undefined, value]]);
+//     }
+//   }
+
+//   return Object.fromEntries(returnData);}
+//REWRITE
+
+// HINTS
+// How can you use uniqueness in your solution? (Set)
+
 export function findObjectDifferences(obj1, obj2) {
-  let returnData = [];
-  for (const [key, value] of Object.entries(obj1)) {
-    if (obj2.hasOwnProperty(key)) {
-      if (value !== obj2[key]) {
-        returnData.push([key, [value, obj2[key]]]);
-      }
-    } else {
-      returnData.push([key, [value, undefined]]);
+  const resultArr = [];
+  const uniqueKeys = new Set([...Object.keys(obj1), ...Object.keys(obj2)]);
+
+  //set creates a collection of unique keys
+
+  for (const key of uniqueKeys) {
+    //cycling throught he keys to pull the values from each object
+    const value1 = obj1[key];
+    const value2 = obj2[key];
+    if (value1 !== value2) {
+      resultArr.push([key, [value1, value2]]);
     }
+    //as long as the values are different they are pushed to be returned as an object
   }
-  for (const [key, value] of Object.entries(obj2)) {
-    if (!obj1.hasOwnProperty(key)) {
-      returnData.push([key, [undefined, value]]);
-    }
-  }
-  console.log(Object.fromEntries(returnData));
-  return Object.fromEntries(returnData);
+  return Object.fromEntries(resultArr);
 }

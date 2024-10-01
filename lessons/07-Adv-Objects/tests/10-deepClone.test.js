@@ -1,4 +1,5 @@
 import { expect } from "chai";
+import sinon from "sinon";
 import { deepClone } from "../10-deepClone";
 import {
   objNoDate,
@@ -6,6 +7,10 @@ import {
   objWithDate,
   clonedObjWithDate,
 } from "../data/10-deepClone.data";
+
+// Mocking to detect calls to Object.assign and structuredClone
+const objectAssignSpy = sinon.spy(Object, "assign");
+const structuredCloneSpy = sinon.spy(globalThis, "structuredClone");
 
 describe("#10: deepClone", () => {
   it("should return an object", () => {
@@ -24,6 +29,16 @@ describe("#10: deepClone", () => {
     expect(result).to.deep.equal(clonedObjWithoutDate);
   });
 
+  it("should not call Object.assign()", () => {
+    deepClone(objNoDate);
+    expect(objectAssignSpy.called).to.be.false;
+  });
+
+  it("should not call structuredClone()", () => {
+    deepClone(objNoDate);
+    expect(structuredCloneSpy.called).to.be.false;
+  });
+
   xdescribe("BONUS", () => {
     it("should correctly clone objects with Date objects", () => {
       const result = deepClone(objWithDate);
@@ -37,3 +52,7 @@ describe("#10: deepClone", () => {
     });
   });
 });
+
+// Restore the original implementations after the test
+objectAssignSpy.restore();
+structuredCloneSpy.restore();

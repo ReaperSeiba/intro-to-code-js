@@ -40,3 +40,8 @@ export const mergeConfigs = (defaultConfig, userConfig) =>
   Object.fromEntries(
     Object.entries(defaultConfig).concat(Object.entries(userConfig))
   );
+
+// Christian's one-liner
+// export function mergeConfigs(defaultConfig, userConfig) {
+//   return { ...defaultConfig, ...userConfig };
+// }

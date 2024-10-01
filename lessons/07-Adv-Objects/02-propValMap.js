@@ -33,19 +33,43 @@
 //assign keys and values (values as an array to account for multiple) to an empty Map
 //if map has the key push new value to the array of values assigned to the key
 export function propValMap(items) {
-  console.log(items);
   const resultsMap = new Map();
+
   for (let i = 0; i < items.length; i++) {
     for (const [key, value] of Object.entries(items[i])) {
       if (resultsMap.has(key)) {
         resultsMap.get(key).push(value);
-        console.log("Value pushed to duplicate key");
       } else {
         resultsMap.set(key, [value]);
-        console.log("Key not found, new key created in Map");
       }
     }
   }
   console.log(resultsMap);
   return resultsMap;
 }
+
+// Christian's version
+// export function propValMap(items) {
+//   // Create an empty Map to store the results
+//   const resultMap = new Map();
+
+//   // Loop through the array of objects
+//   items.forEach((item) => {
+//     // For each object, get all the key-value pairs
+//     const entries = Object.entries(item);
+
+//     // Loop through each key-value pair
+//     entries.forEach(([key, value]) => {
+//       // Check if this key already exists in the Map
+//       if (!resultMap.has(key)) {
+//         // If not, create a new empty array for this key
+//         resultMap.set(key, []);
+//       }
+//       // Add the value to the array associated with the key
+//       resultMap.get(key).push(value);
+//     });
+//   });
+
+//   // Return the Map with all the values collected
+//   return resultMap;
+// }

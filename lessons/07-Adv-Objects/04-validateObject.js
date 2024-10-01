@@ -33,16 +33,113 @@
 
 //first attempt tried for of loops after converting the objects into entry arrays, was unable to iterate correctly
 //second attempt was to try using Maps of the objects for .has and.get
+// export function validateObject(inputObj, schema) {
+//   const inputObjMap = new Map(Object.entries(inputObj));
+//   const schemaMap = new Map(Object.entries(schema));
+
+//   for (const [key, value] of schemaMap) {
+//     if (!inputObjMap.has(key)) {
+//       return false;
+//     } else if (value !== typeof inputObjMap.get(key)) {
+//       console.log(typeof value, typeof inputObjMap.get(key));
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+//4, 9, 10, 11, 12, 13
+//REWRITE (Dont use Map)
+
+/**
+ * //READ TIME 1:45
+ * EXPLAIN
+ * - what are problem objectives?
+ * - what did you learn from examples provided?
+ * - what are possible edge cases?
+ *
+ * The code must compare an input object to a given schema object, the input must have the keys of the schema
+ * and the data types must match the values of the keys within the schema.
+ *
+ * empty schema means the object passes
+ *
+ * fringe case: data types of values could be object or an array?
+ *
+ * 5:01
+ */
+
+/**
+ * APPROACH
+ * - write solution structure in PSUEDOCODE
+ * - basically simple english instructions to solve
+ *
+ * two given objects must be compared
+ * if schema is empty return true
+ * if input object is larger than schema return false
+ * loop through input object and compare against schema object, if keys match use type of to determine data types
+ * if input objects keys and values match with schema return true
+ *
+ *
+ * 4:01
+ */
+
+/**
+ * CODE below
+ */
+
 export function validateObject(inputObj, schema) {
-  const inputObjMap = new Map(Object.entries(inputObj));
-  const schemaMap = new Map(Object.entries(schema));
-  for (const [key, value] of schemaMap) {
-    if (!inputObjMap.has(key)) {
-      return false;
-    } else if (value !== typeof inputObjMap.get(key)) {
-      console.log(typeof value, typeof inputObjMap.get(key));
+  const schemaLength = Object.keys(schema).length;
+  const inputObjLength = Object.keys(inputObj).length;
+
+  if (schemaLength === 0) {
+    return true;
+  } else if (schemaLength > inputObjLength || inputObjLength === 0) {
+    return false;
+  }
+
+  for (const entry in inputObj) {
+    if (
+      schema[entry] !== typeof inputObj[entry] &&
+      schema.hasOwnProperty(entry)
+    ) {
       return false;
     }
   }
   return true;
 }
+//28:36
+/**
+ * COMPLEXITY
+ *
+ * Copy your function implementation into ChatGPT and ask it for time and space complexity analysis. Be sure to ask questions if you don't understand terms/topics/etc.
+ *
+ * TIME   O(), where...
+ * SPACE  O(), where...
+ */
+
+/**
+ * COMPLEXITY
+ *
+ * TIME   O(i + s)
+ * SPACE  O(i + s)
+ */
+
+/**
+ * OPTIMIZE
+ * Once you have a working answer, re-examine implementation
+ * How can you optimize it?
+ */
+//2:00, didn't have any ideas on how to optimize
+
+/**
+ * use wsplit or just a stopwatch app with a lap timer for this
+ *
+ *                  Total   Split
+ *
+ * READ             01:43
+ * EXPLAIN          05:01   05:01
+ * APPROACH         04:01   00:00
+ * CODE [PASS]      28:36   20:09
+ * OPTIMIZE         02:00   02:00
+ *
+ * Overall Total    41:21
+ */

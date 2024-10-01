@@ -27,9 +27,18 @@
  */
 //objects are pass by reference meaning assigning a 'clone' inputObj will mutate the original when modified...
 //Objective: create a new object utilizing data within inputObj
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
-//I dont think this was supposed to pass accoding to the warning for deepcloning in the docs??
-export function deepClone(inputObj) {
-  const clone = Object.assign({}, inputObj);
-  return clone;
+
+export function deepClone(object) {
+  //found in docs does not pass bonus
+
+  const objectCopy = JSON.parse(JSON.stringify(object));
+  return objectCopy;
 }
+
+// HINT
+// What's the difference between a shallow copy of an object and a deep copy?
+
+//Shallow Clones create a new object but with only the top level properties, meaning that nested objects
+//become references rather than direct fully copies
+
+//Deep Clone is a fully recursive copy of an object creating actual copies of every nested object.

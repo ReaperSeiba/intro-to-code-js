@@ -1,3 +1,5 @@
+import { isAnObject } from "../06-Objects/01-isAnObject";
+
 /**
  * #13: objectFlattener
  *
@@ -33,30 +35,48 @@
 // test to see if they are an object, push results that are not objects to array
 //if object use helper function that runs until object detection is false and returns a flattened array
 
+// export function objectFlattener(inputObj) {
+//   let resultArr = [];
+//   for (const [key, value] of Object.entries(inputObj)) {
+//     if (isAnObject(value)) {
+//       resultArr.concat(flatten(value));
+//     } else {
+//       resultArr.push([key, value]);
+//     }
+//   }
+//   return Object.fromEntries(resultArr);
+// }
+
+// function flatten(objectToFlatten) {
+//   let array = [];
+//   for (const [key, value] of Object.entries(objectToFlatten)) {
+//     if (isAnObject(value)) {
+//       array.concat(flatten(value));
+//     } else {
+//       array.push([key, value]);
+//     }
+//   }
+//   console.log(array);
+//   return array;
+// }
+
+// HINTS
+// Use isAnObject
+// Stick to Object methods; no Array conversions/methods needed
+
 export function objectFlattener(inputObj) {
-  let resultArr = [];
+  let resultObj = {};
   for (const [key, value] of Object.entries(inputObj)) {
+    //if value is an object assign its key values to the result object
     if (isAnObject(value)) {
-      resultArr.concat(flatten(value));
-    } else {
-      resultArr.push([key, value]);
+      Object.assign(resultObj, value);
+    }
+    //otherwise assign current key value pair to object
+    else {
+      resultObj[key] = value;
     }
   }
-  return Object.fromEntries(resultArr);
+  return resultObj;
 }
 
-function flatten(objectToFlatten) {
-  let array = [];
-  for (const [key, value] of Object.entries(objectToFlatten)) {
-    if (isAnObject(value)) {
-      array.concat(flatten(value));
-    } else {
-      array.push([key, value]);
-    }
-  }
-  console.log(array);
-  return array;
-}
-
-export const isAnObject = (input) =>
-  typeof input === "object" && input !== null && !Array.isArray(input);
+// Didnt expect full pass; idk why this passest for multiple nested objects if its only flattening 1 layer??

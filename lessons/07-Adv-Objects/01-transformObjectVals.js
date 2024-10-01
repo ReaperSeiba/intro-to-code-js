@@ -24,6 +24,16 @@
  * const uppercased = transformObjectVals(words, x => x.toUpperCase());
  * // uppercased: { x: "HELLO", y: "WORLD" }
  */
+
+/**
+ * One not-nested loop is O(n), where n is the number of things iterated through
+ * .keys loop
+ * .values loop
+ * .map loop
+ * object keys assignment loop
+ *
+ * Time Complexity: O(4n) => O(n)
+ */
 export function transformObjectVals(inputObj, transformFn) {
   let objectKeysArr = Object.keys(inputObj);
   let objectValuesArr = Object.values(inputObj).map(transformFn);
@@ -33,3 +43,17 @@ export function transformObjectVals(inputObj, transformFn) {
   }
   return resultObj;
 }
+
+/**
+ * for...in loop
+ *
+ * Time Complexity: O(n)
+ */
+// Christian's version
+// export function transformObjectVals(inputObj, transformFn) {
+//   const result = {};
+//   for (const key in inputObj) {
+//     result[key] = transformFn(inputObj[key]);
+//   }
+//   return result;
+// }

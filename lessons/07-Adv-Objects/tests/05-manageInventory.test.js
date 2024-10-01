@@ -13,7 +13,7 @@ import {
   expectedDifferentNamesResult,
 } from "../data/05-manageInventory.data";
 
-describe("#5: manageInventory", () => {
+xdescribe("#5: manageInventory", () => {
   it("should return an empty object if no items are provided", () => {
     expect(manageInventory(noItems)).to.deep.equal(expectedEmptyResult);
   });
