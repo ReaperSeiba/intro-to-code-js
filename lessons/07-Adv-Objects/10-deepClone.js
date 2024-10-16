@@ -35,6 +35,27 @@ export function deepClone(object) {
   return objectCopy;
 }
 
+// export function deepClone(inputObj) {
+//   const copy = {};
+
+//   for (const key in inputObj) {
+//     const val = inputObj[key];
+
+//     if (val instanceof Date) {
+//       // Handle Date objects by creating a new Date instance
+//       copy[key] = new Date(val.getTime());
+//     } else if (typeof val === "object" && val !== null) {
+//       // Handle plain objects by creating a shallow copy
+//       copy[key] = { ...val };
+//     } else {
+//       // Handle other types (primitives, functions, etc.)
+//       copy[key] = val;
+//     }
+//   }
+
+//   return copy;
+// }
+
 // HINT
 // What's the difference between a shallow copy of an object and a deep copy?
 

@@ -86,7 +86,32 @@ export function phraseScore(inputPhrase, comboActive) {
     previousChar = char;
   }
 
-  return score * inputPhrase.length;
+  return comboActive ? score * inputPhrase.length : score;
 }
 
 //Rewrite attempt
+
+// export function phraseScore(inputPhrase, comboActive) {
+//   let score = 0;
+//   let lastChar = "";
+//   let combo = 1;
+//   const multiplier = inputPhrase.length;
+
+//   for (const char of inputPhrase) {
+//     const charValue = letterValues[char];
+//     if (comboActive) {
+//       if (lastChar === char) {
+//         combo += 1; // Increment combo count
+//         score += charValue * combo; // Add the character value multiplied by the combo to the score
+//       } else {
+//         combo = 1; // Reset the combo count to 1
+//         score += charValue; // Add just the character value to the score
+//       }
+//       lastChar = char; // Update the last viewed character to current one
+//     } else {
+//       score += charValue; // no combo rules, just add letter score
+//     }
+//   }
+
+//   return comboActive ? score * multiplier : score;
+// }

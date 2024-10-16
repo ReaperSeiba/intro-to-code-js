@@ -80,3 +80,30 @@ export function objectFlattener(inputObj) {
 }
 
 // Didnt expect full pass; idk why this passest for multiple nested objects if its only flattening 1 layer??
+
+// export function objectFlattener(inputObj) {
+//   for (const key in inputObj) {
+//     const currValue = inputObj[key];
+//     if (isAnObject(currValue)) {
+//       for (const subKey in currValue) {
+//         inputObj[subKey] = currValue[subKey];
+//       }
+//       delete inputObj[key];
+//     }
+//   }
+//   return inputObj;
+// }
+
+// /**
+//  * Using Object.assign
+//  */
+// export function objectFlattener(inputObj) {
+//   for (const key in inputObj) {
+//     const currVal = inputObj[key];
+//     if (isAnObject(currVal)) {
+//       Object.assign(inputObj, currVal);
+//       delete inputObj[key];
+//     }
+//   }
+//   return inputObj;
+// }

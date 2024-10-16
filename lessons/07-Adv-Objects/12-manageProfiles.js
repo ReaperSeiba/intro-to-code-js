@@ -67,3 +67,22 @@ export function manageProfiles(profiles, updates) {
   return profiles;
 }
 //REWRITE
+
+// export function manageProfiles(profiles, updates) {
+//   // Create a new object to hold the updated profiles
+//   const updatedProfiles = { ...profiles };
+
+//   // Iterate over each key in the updates object
+//   for (const key in updates) {
+//     // If the profile already exists, merge the existing profile with the updates
+//     if (key in updatedProfiles) {
+//       updatedProfiles[key] = { ...updatedProfiles[key], ...updates[key] };
+//     } else {
+//       // If the profile does not exist, add it with the new details
+//       updatedProfiles[key] = updates[key];
+//     }
+//   }
+
+//   // Return the updated profiles object
+//   return updatedProfiles;
+// }

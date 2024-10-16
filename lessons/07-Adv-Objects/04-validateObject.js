@@ -62,7 +62,7 @@
  *
  * empty schema means the object passes
  *
- * fringe case: data types of values could be object or an array?
+ * edge case: data types of values could be object or an array?
  *
  * 5:01
  */
@@ -106,7 +106,7 @@ export function validateObject(inputObj, schema) {
   }
   return true;
 }
-//28:36
+// 28:36
 /**
  * COMPLEXITY
  *
@@ -143,3 +143,19 @@ export function validateObject(inputObj, schema) {
  *
  * Overall Total    41:21
  */
+
+// Expanded oneliner
+// export function validateObject(inputObj, schema) {
+//   return Object.keys(schema).every((key) => {
+//     const isKeyPresent = key in inputObj;
+//     const isTypeValid = typeof inputObj[key] === schema[key];
+//     return isKeyPresent && isTypeValid;
+//   });
+// }
+
+// Condensed oneliner
+// export function validateObject(inputObj, schema) {
+//   return Object.keys(schema).every(
+//     (key) => key in inputObj && typeof inputObj[key] === schema[key]
+//   );
+// }
