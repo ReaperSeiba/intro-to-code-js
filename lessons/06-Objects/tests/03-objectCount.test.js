@@ -41,7 +41,7 @@ describe("#3: objectCount", () => {
     });
   });
 
-  xdescribe("BONUS", () => {
+  describe("BONUS", () => {
     describe("also examines array sub-values for objects and adds any found to the total count", () => {
       it("when the value array is empty", () => {
         expect(objectCount(noObjectsEmptyBonus)).to.be.a("number");

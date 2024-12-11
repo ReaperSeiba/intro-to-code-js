@@ -39,7 +39,24 @@ describe("#10: deepClone", () => {
     expect(structuredCloneSpy.called).to.be.false;
   });
 
-  xdescribe("BONUS", () => {
+  // Makes problem FAR too difficult to solve without recursion
+  // solution uses stack
+  //
+  // it("should ensure the returned object is not a shallow copy of the original (no shared reference)", () => {
+  //   const obj1 = { a: 1, b: { c: 2 } };
+  //   const obj2 = deepClone(obj1); // Assuming deepClone function is tested here
+
+  //   // Check that obj2 is not the same reference as obj1
+  //   expect(obj2).to.not.equal(obj1);
+
+  //   // Check that obj2 deeply equals obj1 (all values are the same)
+  //   expect(obj2).to.deep.equal(obj1);
+
+  //   // Further check that nested objects also don't share the same reference
+  //   expect(obj2.b).to.not.equal(obj1.b);
+  // });
+
+  describe("BONUS", () => {
     it("should correctly clone objects with Date objects", () => {
       const result = deepClone(objWithDate);
       expect(result).to.deep.equal(clonedObjWithDate);
