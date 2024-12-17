@@ -29,4 +29,13 @@
  * delayedGreeting('Bob', 1000, (greeting) => console.log(greeting));
  * // After 1 second, logs: "Hello, Bob!"
  */
-export function delayedGreeting() {}
+
+// delayedGreeting is a function that will log a message after a specfied delay. Name, delay, and a callback function are provided as input parameters
+// delay should be used in a setTimeout as the delay input, name will be used as part of the console log, the callback will be used within SetTimout
+
+export function delayedGreeting(name, delay, callback) {
+  setTimeout(() => {
+    //set timeout to utilize the delay parameter and to call the callback function
+    callback(`Hello, ${name}!`);
+  }, delay);
+}

@@ -20,5 +20,30 @@
  *   .then(result => console.log(result)) // Outputs: 'Success 2'
  *   .catch(error => console.error(error));
  */
+//Given an array of promises "tasks"
+//firstSuccessfulResult must return a promise that resolves with the result of the first successful promise in the array, iterate through the array
+//if all promises fail reject with "All tasks failed."
 
-export const firstSuccessfulResult = () => {};
+//NOTE For loop to iterate through the 'tasks' array may be needed * Couldn't get this to work
+
+//NOTE promises to race? https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race potentially using this iterative method for Promise? * Couldnt get this to work because it works whether fulfilled or rejected
+
+//NOTE https://sliceofdev.com/posts/promises-with-loops-and-array-methods-in-javascript - For each loop attempt * Couldnt get to work because promises were pending.
+
+//NOTE https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any - Promise.any() attempt | Should resolve on first successful and fail on all rejections
+
+export const firstSuccessfulResult = (tasks) => {
+  return Promise.any(tasks) //Promise.any resolves on the first successful promise out of an array of promises
+    .then((result) => {
+      //.then is only executed upon fulfillment
+      console.log(result);
+      return result;
+    })
+    .catch(() => {
+      //.catch is only executed upon rejection
+      console.log("All tasks failed.");
+    })
+    .finally(() => {
+      console.log("All tasks completed"); //.finally is executed regardless of fulfillment or rejection
+    });
+};

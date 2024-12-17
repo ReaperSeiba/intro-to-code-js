@@ -26,5 +26,24 @@
  * // If an error occurs during fetching:
  * // Returns: { error: "Failed to fetch data" }
  */
+// Two callback functions passed into getPostsByUser (fetchUserData and fetchUserPosts)
+// fetchUserData needs no parameters, return a promise that resolves to an object with {id: Number, name: string}
+// fetchUserPosts accepts User Id and returns a Promise that resolves to an array of objects with {id: Number, title: string}
 
-export const getPostsByUser = () => {};
+// A check will be needed (.then) for the case where both promises fulfill where an object is returned with userdata and user posts, one object so the objects will be merged
+// A an error will be needed for a rejection from either callback, returns an object containing an error.
+//.then chaining to the eventual return object seems useful
+
+export const getPostsByUser = (fetchUserData, fetchUserPosts) => {
+  return fetchUserData() //fetchUserPosts is reliant on fetchUserData resolving
+    .then(
+      (
+        user //.then passes the userData into fetchUserPosts which uses the id in the userData object to attempt to fulfill its .then which returns an object containing user and posts
+      ) =>
+        fetchUserPosts(user.id).then((posts) => ({
+          user,
+          posts,
+        }))
+    )
+    .catch(() => ({ error: "Failed to fetch data" })); //if either fail .catch returns an object containing an error;
+};

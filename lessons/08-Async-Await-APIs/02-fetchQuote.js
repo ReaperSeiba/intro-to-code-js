@@ -24,4 +24,22 @@ import { quotes } from "./data/02-fetchQuotes.data";
  *   console.log(error); // "Failed to fetch quote"
  * });
  */
-export const fetchQuote = () => {};
+// Function fetchQuote will return a promise
+//  when the promise resolves it will return a random quote from an array 'quotes'
+//  the promise will have a 10% chance of rejection which will log a message: "Failed to fetch quote"
+console.log(quotes.length);
+console.log(quotes);
+export const fetchQuote = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      //set timeout to include the required 350ms delay
+      const success = Math.random() > 0.1; //simulate a 1/10 chance of failure
+      if (success) {
+        let randomQuote = Math.floor(Math.random() * quotes.length); //pick a random quote out of an array
+        resolve(quotes[randomQuote]); //if promise is fulfilled
+      } else {
+        reject("Failed to fetch quote"); //if promise is rejected
+      }
+    }, 350);
+  });
+};

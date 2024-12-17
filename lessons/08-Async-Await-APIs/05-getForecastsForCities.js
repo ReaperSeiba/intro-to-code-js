@@ -41,4 +41,38 @@
  * // Returns: "Failed to fetch weather data for all cities"
  */
 
-export async function getForecastsForCities() {}
+// array of cities is provided to fetch weather data from
+// a callback function 'fetchForecast' is provided and predefined as an input parameter
+// fetchForecast accepts a string ('city'), returns a promise containing the city's weather data, rejects if city is not found
+
+// getForecastsForCities should return an object containing Promises for each city grouped by successful (with data) and failed
+// if all requests fail return a failure message
+
+//Potentially useful: forEach for cycling through the array ***forEach will not pause for asynchrounous operations, for of loops are the proper way!!!***, awaits for each city tested, builds and object with the required return data.
+
+export async function getForecastsForCities(cities, fetchForecast) {
+  const cityData = { successful: [], failed: [] }; //stores eventual data for the succesful and failed cities
+  let oneSuccess = false;
+  for (const city of cities) //for of loop works well with await {
+    try {
+      //try allows error handling
+      cityData["successful"].push({
+        city: city,
+        data: await fetchForecast(city),
+      });
+      oneSuccess = true;
+    } catch {
+      //handles error
+      cityData["failed"].push(city);
+    } finally {
+      if (oneSuccess) {
+        console.log("All available forecasts fetched"); //always returns at end of the try/catch if no success was found
+      } else {
+        return "Failed to fetch weather data for all cities"; //only returns at the end of try/catch when no success was found
+      }
+    }
+  if (oneSuccess) {
+    //only returns cityData object if at least one success was found
+    return cityData;
+  }
+}

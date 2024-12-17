@@ -35,8 +35,36 @@
  * const userData = await fetchUser(99);
  * // Error: `Failed to fetch user with ID: 99`
  */
+//using an array of user Ids fed to a helper function 'fetchUser' fetchMultipleUsers will return a data object containing successful[dataObjs] and failed[userIds]
 
-export const fetchUser = () => {};
+//fetchUser accepts "userId" and returns Obj on success and "Failed to fetch user with Id: ${userId}" on failure
+//fetchUser will use a fetch(url, GET) request to the specified url
+//fetch call will have headers
+// - an Authorization header with value `Bearer fake123fake456fake789`
+//  * - Content-Type and Accept headers with value `"application/json"`
+
+export const fetchUser = (userId) => {
+  return fetch(`https://jsonplaceholder.typicode.com/users/${userId}`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer fake123fake456fake789`,
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  })
+    .then((response) => {
+      // handle the response and use .json to parse the response to later return the data in proper format
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data); //check to make sure data is parsed and returned correclty
+      return data;
+    })
+    .catch(() => {
+      // handle any errors by returning an error message
+      return `Failed to fetch user with Id: ${userId}`;
+    });
+};
 
 /**
  * @category 08 - Async/Await & APIs
@@ -65,5 +93,59 @@ export const fetchUser = () => {};
  * //   failed: [ 5, 6 ]
  * // }
  */
+// using helper function resolve with an object comprised of information returned by the array of userIds
+//resolve with an object containing two arrays successful and failed
+//with for loop... promise.all to await all promises needed from fetchUser?
+//without for loop = recursive? fetchMultipleUsers could call itself after each iteration of userIds in the array
 
-export const fetchMultipleUsers = () => {};
+export const fetchMultipleUsers = (userIds) => {
+  const userData = { successful: [], failed: [] }; // stores eventual data for the successful and failed user Fetches
+  const promises = []; // holds promises to use Promise.all as return
+
+  for (const user of userIds) {
+    promises.push(
+      fetchUser(user) // allows storing of fetchUser promise
+        .then((currentUser) => {
+          if (typeof currentUser === "object") {
+            userData.successful.push(currentUser); // Add to successful if it is an object
+          } else {
+            userData.failed.push(user); // Add to failed if it is not an object
+          }
+        })
+        .catch(() => {
+          console.log("fetchUser function failed for user:", user); // If fetch helper function fails we add failed user id anyway
+          userData.failed.push(user);
+        })
+    );
+  }
+
+  return Promise.all(promises).then(() => userData); // Promise.all waits for all promises to resolve .then returns userData object from each fulfilled promise
+};
+
+// //bonus attempt using recursion (didnt work) ****** note to future self for a 2nd attempt, after figuring out promise.all
+// usecase for the for of solution it might be possible to do a similar storing of promises to ensure everything resolves at the right time
+// export const fetchMultipleUsers = (
+//   userIds,
+//   index = 0,
+//   usersData = { successful: [], failed: [] }
+// ) => {
+//   if (index >= userIds.length) {
+//     return usersData; //promises.all here maybe??
+//   }
+//   return fetchUser(userIds[index])
+//     .then((user) => {
+//       if (user.id) {
+//         // prevent strings from being put into successful
+//         return usersData.successful.push(user);
+//       } else {
+//         return usersData.failed.push(userIds[index]);
+//       }
+//     })
+//     .catch(() => {
+//       //might not be necessary? fetchUser itself shouldn't fail
+//       return usersData.failed.push(userIds[index]);
+//     })
+//     .finally(() => {
+//       return fetchMultipleUsers(userIds, index + 1, usersData);
+//     });
+// };
