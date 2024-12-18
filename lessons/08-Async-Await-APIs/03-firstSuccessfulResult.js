@@ -47,3 +47,14 @@ export const firstSuccessfulResult = (tasks) => {
       console.log("All tasks completed"); //.finally is executed regardless of fulfillment or rejection
     });
 };
+
+// Using try/catch/finally
+// export const firstSuccessfulResult = async (tasks) => {
+//   try {
+//     return await Promise.any(tasks);
+//   } catch (error) {
+//     throw new Error("All tasks failed");
+//   } finally {
+//     console.log("All tasks completed");
+//   }
+// };

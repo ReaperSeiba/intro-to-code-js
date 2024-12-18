@@ -55,7 +55,7 @@ export async function getForecastsForCities(cities, fetchForecast) {
   let oneSuccess = false;
   for (const city of cities) //for of loop works well with await {
     try {
-      //try allows error handling
+      //try allows error handling in async
       cityData["successful"].push({
         city: city,
         data: await fetchForecast(city),
@@ -75,4 +75,31 @@ export async function getForecastsForCities(cities, fetchForecast) {
     //only returns cityData object if at least one success was found
     return cityData;
   }
+}
+
+// Using try/catch & async/await
+export async function getForecastsForCities(cities, fetchForecast) {
+  const successful = [];
+  const failed = [];
+
+  const weatherPromises = cities.map((city) => fetchForecast(city));
+  const results = await Promise.allSettled(weatherPromises);
+
+  results.forEach((result, index) => {
+    const city = cities[index];
+
+    if (result.status === "fulfilled") {
+      successful.push({ city, data: result.value });
+    } else {
+      failed.push(city);
+    }
+  });
+
+  if (successful.length === 0) {
+    return "Failed to fetch weather data for all cities";
+  }
+
+  console.log("All available forecasts fetched");
+
+  return { successful, failed };
 }

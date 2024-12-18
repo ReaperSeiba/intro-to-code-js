@@ -66,6 +66,30 @@ export const fetchUser = (userId) => {
     });
 };
 
+// Using try/catch & async/await
+// export const fetchUser = async (userId) => {
+//   try {
+//     const response = await fetch(
+//       `https://jsonplaceholder.typicode.com/users/${userId}`,
+//       {
+//         method: "GET",
+//         headers: {
+//           Authorization: `Bearer fake123fake456fake789`,
+//           "Content-Type": "application/json",
+//           Accept: "application/json",
+//         },
+//       }
+//     );
+
+//     if (!response.ok)
+//       throw new Error(`Failed to fetch user with ID: ${userId}`);
+
+//     return await response.json();
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
+
 /**
  * @category 08 - Async/Await & APIs
  * @function fetchMultipleUsers
@@ -121,6 +145,78 @@ export const fetchMultipleUsers = (userIds) => {
 
   return Promise.all(promises).then(() => userData); // Promise.all waits for all promises to resolve .then returns userData object from each fulfilled promise
 };
+
+// Single for...of loop
+// export const fetchMultipleUsers = async (userIds) => {
+//   const results = {
+//     successful: [],
+//     failed: [],
+//   };
+
+//   for (const userId of userIds) {
+//     try {
+//       const user = await fetchUser(userId);
+//       results.successful.push(user);
+//     } catch (error) {
+//       results.failed.push(userId);
+//     }
+//   }
+
+//   return results;
+// };
+
+// Using map and two filter calls
+// export const fetchMultipleUsers = async (userIds) => {
+//   const results = await Promise.allSettled(
+//     userIds.map((userId) =>
+//       fetchUser(userId)
+//         .then((userData) => ({ status: "fulfilled", value: userData }))
+//         .catch(() => ({ status: "rejected", userId }))
+//     )
+//   );
+
+//   const successful = results
+//     .filter((result) => result.status === "fulfilled")
+//     .map((result) => result.value);
+
+//   const failed = results
+//     .filter((result) => result.status === "rejected")
+//     .map((result) => result.userId);
+
+//   return { successful, failed };
+// };
+
+// Uncommented one-liner
+// export const fetchMultipleUsers = async (userIds, fetchUser) =>
+//   (await Promise.allSettled(userIds.map(fetchUser))).reduce(
+//     (acc, result, idx) => (
+//       result.status === "fulfilled"
+//         ? acc.successful.push(result.value)
+//         : acc.failed.push(userIds[idx]),
+//       acc
+//     ),
+//     { successful: [], failed: [] }
+//   );
+
+// Commented one-liner
+// export const fetchMultipleUsers = async (userIds) =>
+//   // Step 1: Use Promise.allSettled to get the status of all fetchUser Promises
+//   (await Promise.allSettled(userIds.map(fetchUser)))
+//     // Step 2: Use reduce to iterate through the results and accumulate successful and failed tasks
+//     .reduce(
+//       (acc, result, idx) => (
+//         // Step 3: Check if the current result's status is "fulfilled"
+//         result.status === "fulfilled"
+//           ? // If fulfilled, push the resolved value (user data) to the "successful" array
+//             acc.successful.push(result.value)
+//           : // If rejected, push the user ID (from the original array) to the "failed" array
+//             acc.failed.push(userIds[idx]),
+//         // Step 4: Return the updated accumulator object in each iteration
+//         acc
+//       ),
+//       // Step 5: Initialize the accumulator with two empty arrays: "successful" and "failed"
+//       { successful: [], failed: [] }
+//     );
 
 // //bonus attempt using recursion (didnt work) ****** note to future self for a 2nd attempt, after figuring out promise.all
 // usecase for the for of solution it might be possible to do a similar storing of promises to ensure everything resolves at the right time

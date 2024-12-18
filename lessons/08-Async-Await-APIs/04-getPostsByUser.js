@@ -47,3 +47,14 @@ export const getPostsByUser = (fetchUserData, fetchUserPosts) => {
     )
     .catch(() => ({ error: "Failed to fetch data" })); //if either fail .catch returns an object containing an error;
 };
+
+// Using try/catch with async/await
+// export const getPostsByUser = async (fetchUserData, fetchUserPosts) => {
+//   try {
+//     const user = await fetchUserData();
+//     const posts = await fetchUserPosts(user.id);
+//     return { user, posts };
+//   } catch (error) {
+//     return { error: "Failed to fetch data" };
+//   }
+// };
