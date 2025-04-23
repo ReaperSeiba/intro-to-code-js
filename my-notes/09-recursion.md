@@ -41,6 +41,14 @@ It's basically means that the computer you're on has run out of memory to track 
 
 Give it a stopping point, usually with some form of conditional. This stopping point is also commonly known as the base case (vs the recursive case).
 
+## What is the Call Stack?
+
+The call stack is a stack of calls in order from which they were called.
+
+A call stack is an example of a stack, which is data structure that follows LIFO.
+
+This is in contrast to a queue which is FIFO.
+
 ## Counting to Five
 
 We use a for-loop starting from the input number to log each number to 5.
@@ -112,6 +120,14 @@ Here we log before the comparison to 5, to see if we need to increment the curre
 function countToFive(startingPoint) {
   for (; startingPoint <= 5; startingPoint++) {
     console.log(startingPoint);
+  }
+}
+
+function countToFive(start) {
+  while (start <= 5) {
+    console.log(start);
+    start++;
+    countToFive(start);
   }
 }
 
@@ -280,7 +296,7 @@ answer
 This continues until the empty string case, where it looks as follows:
 
 ```
-rsr("")
+rsr("") => hit the base case, no more recursive call, only value returned
 rsr("h")
 rsr("he")
 rsr("hel")

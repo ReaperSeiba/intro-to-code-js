@@ -61,12 +61,31 @@
 // While the starting string has remaining characters continue recursion to remove them one at a time
 // What are we doing to eventually get to a base case?
 // building a new string from the last character of the input string until the original string has reached 0 characters
-console.log(recursiveReverseStr("meow"));
+// console.log(recursiveReverseStr("meow"));
 
-function recursiveReverseStr(str) {
-  if (str.length === 0) {
-    return "";
-  }
-  let stringIndex = str.length - 1;
-  return str[stringIndex] + recursiveReverseStr(str.slice(0, -1));
+// function recursiveReverseStr(str) {
+//   if (str.length === 0) {
+//     return "";
+//   }
+//   let stringIndex = str.length - 1;
+//   return str[stringIndex] + recursiveReverseStr(str.slice(0, -1));
+// }
+
+// function countToFive(start) {
+//   if (start <= 5) {
+//     console.log(start);
+//   } else {
+//     return;
+//   }
+//   countToFive(start + 1);
+// }
+
+function countToFive(n) {
+  // Base case: when we stop recursing/begin resolving
+  if (n > 5) return;
+
+  console.log(n);
+  countToFive(n + 1);
 }
+
+console.log(countToFive(0));
