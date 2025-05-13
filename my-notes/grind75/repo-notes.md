@@ -25,13 +25,14 @@ STEPS:
    // If your issue number is 7
    git commit -m '#7 message detail what this final commit for this issue contains'
    ```
-7. On Github: open a new PR and be sure to switch the base repository to my own and base branch to corresponding feature.
+7. Push your branch.
+8. On Github: open a new PR and be sure to switch the base repository to my own and base branch to corresponding feature.
    1. You can also access the "Create New PR for your pushed branch" GitHub page by Ctrl-Clicking the link that appears in the result message after pushing your branch for the first to origin.
    2. Remember, Manual Pull Request, New Pull Request, My Repo, Change base branch, change issue branch
-8. Create Pull Request | "CODE-# Title" | Add reviewer, assignee, labels, projects, milestone
+9. Create Pull Request | "CODE-# Title" | Add reviewer, assignee, labels, projects, milestone
    1. If your PR is complete (no more work to be added and ready for review), create a Pull request
    2. If your PR is still in-progress, create a Draft Pull Request
-9. Within the PR Description, add the following:
+10. Within the PR Description, add the following:
 
 ```md
 # Parent
