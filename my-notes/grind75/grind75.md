@@ -6,9 +6,9 @@
 
 ### Week 1
 
-Two Sum
-Valid Parentheses
-Merge Two Sorted Lists
+Two Sum - PR Done
+Valid Parentheses - PR Done
+Merge Two Sorted Lists - PR Done
 Best Time to buy and sell stock
 Valid Palindrome
 Valid Anagram

@@ -48,10 +48,10 @@
  *
  *                  Total   Split
  *
- * READ             00:47
- * EXPLAIN          01:31   02:18
- * APPROACH         12:48   15:07
- * CODE [PASS]      12:27   27:36
- * TEST             06:01   33:37
- * OPTIMIZE         24:37   58:38
- */
+ * READ
+ * EXPLAIN
+ * APPROACH
+ * CODE [PASS]
+ * TEST
+ * OPTIMIZE
+ * */
